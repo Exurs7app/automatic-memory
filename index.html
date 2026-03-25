@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWMONT - Professional Edition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg: #000000; --card: #121212; --accent: #8b5cf6; --text-dim: #9ca3af; --border: #1f2937; --success: #10b981; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: var(--bg); color: white; direction: rtl; }
+        .hidden { display: none !important; }
+
+        /* --- شاشة الدخول --- */
+        #login-screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .login-box { width: 85%; max-width: 400px; text-align: center; }
+        .input-row { display: flex; background: #1a1a1c; border-radius: 12px; margin-bottom: 15px; border: 1px solid #333; overflow: hidden; }
+        .country-select { background: #222; color: white; border: none; padding: 10px; font-size: 14px; border-left: 1px solid #333; }
+        .login-input { background: none; border: none; color: white; padding: 15px; width: 100%; outline: none; }
+
+        /* --- الهيدر --- */
+        .header { background: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+
+        /* --- التحديثات في البيت --- */
+        .news-bar { background: #1a1a1a; padding: 8px; font-size: 12px; color: var(--accent); border-bottom: 1px solid #333; display: flex; align-items: center; }
+        .platform-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
+        .stat-card { background: #111; border: 1px solid #222; padding: 15px; border-radius: 12px; text-align: center; }
+        .withdraw-list { padding: 15px; }
+        .withdraw-item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #1a1a1a; font-size: 13px; }
+
+        /* --- قائمة المهام --- */
+        .task-tabs { display: flex; background: #111; margin: 10px; border-radius: 10px; padding: 5px; }
+        .task-tab { flex: 1; text-align: center; padding: 10px; border-radius: 8px; font-size: 14px; cursor: pointer; }
+        .task-tab.active { background: var(--accent); color: white; }
+        .task-card { background: var(--card); margin: 15px; border-radius: 15px; padding: 15px; border: 1px solid var(--border); }
+        .task-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .task-btn { background: var(--accent); border: none; color: white; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: bold; }
+
+        /* --- VIP Cards --- */
+        .vip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
+        .vip-card { background: white; border-radius: 15px; overflow: hidden; color: #333; position: relative; cursor: pointer; }
+        .vip-img { width: 100%; height: 130px; object-fit: cover; }
+        .lock-overlay { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 30px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .vip-info { padding: 10px; }
+        .vip-info .price { font-size: 16px; font-weight: 800; color: #000; }
+
+        /* --- صفحة أنا (Me) --- */
+        .profile-header { padding: 20px; display: flex; align-items: center; gap: 15px; }
+        .p-avatar { width: 65px; height: 65px; background: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #333; }
+        .p-avatar img { width: 40px; }
+        .p-info b { font-size: 18px; letter-spacing: 0.5px; }
+        .p-info p { margin: 5px 0 0; color: var(--text-dim); font-size: 13px; }
+
+        .stats-container { background: var(--card); margin: 0 15px 15px; border-radius: 15px; padding: 20px; border: 1px solid var(--border); }
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .stat-item { flex: 1; }
+        .stat-item small { color: var(--text-dim); font-size: 11px; display: block; margin-bottom: 5px; }
+        .stat-item b { font-size: 18px; }
+
+        .menu-list { margin: 15px; background: var(--card); border-radius: 15px; border: 1px solid var(--border); }
+        .menu-link { padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; cursor: pointer; }
+        .menu-link:last-child { border: none; }
+
+        /* --- النوافذ (Deposit & Withdraw) --- */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; display: flex; justify-content: center; align-items: center; }
+        .modal { background: #1a1a1c; width: 90%; max-width: 380px; border-radius: 20px; padding: 20px; text-align: center; border: 1px solid #333; max-height: 90vh; overflow-y: auto; }
+        .net-btn { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #333; background: #111; color: white; cursor: pointer; font-size: 12px; }
+        .net-btn.active { border-color: var(--accent); background: var(--accent); }
+        
+        .modal-input { width: 100%; background: #000; border: 1px solid #333; padding: 12px; border-radius: 10px; color: white; margin-bottom: 10px; box-sizing: border-box; text-align: right; outline: none; }
+        .modal-input:focus { border-color: var(--accent); }
+
+        /* --- Navigation --- */
+        .nav { position: fixed; bottom: 0; width: 100%; background: #000; display: flex; justify-content: space-around; padding: 10px 0 25px; border-top: 1px solid var(--border); }
+        .nav-item { color: #666; font-size: 11px; text-align: center; flex: 1; }
+        .nav-item.active { color: var(--accent); }
+        .nav-item i { font-size: 20px; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-box">
+            <h1 style="color:white; letter-spacing:4px;">NEWMONT</h1>
+            <div class="input-row">
+                <select class="country-select" id="country-code">
+                    <option value="+963">🇸🇾 +963</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+20">🇪🇬 +20</option>
+                </select>
+                <input type="tel" id="user-phone" class="login-input" placeholder="رقم الهاتف">
+            </div>
+            <button onclick="handleLogin()" style="width:100%; padding:15px; border-radius:12px; border:none; background:var(--accent); color:white; font-weight:bold;">دخول</button>
+        </div>
+    </div>
+
+    <div id="app" class="hidden">
+        <header class="header"><i class="fa-solid fa-headset"></i><b>NEWMONT</b><i class="fa-solid fa-bell"></i></header>
+        <div id="main-content" style="padding-bottom: 100px;"></div>
+        <nav class="nav">
+            <div class="nav-item" onclick="navTo('home')" id="n-home"><i class="fa-solid fa-house"></i>بيت</div>
+            <div class="nav-item" onclick="navTo('task')" id="n-task"><i class="fa-solid fa-list-check"></i>مهمة</div>
+            <div class="nav-item" onclick="navTo('vip')" id="n-vip"><i class="fa-solid fa-crown"></i>كبار الشخصيات</div>
+            <div class="nav-item" onclick="navTo('me')" id="n-me"><i class="fa-solid fa-user"></i>أنا</div>
+        </nav>
+    </div>
+
+    <!-- نافذة الإيداع -->
+    <div id="deposit-modal" class="overlay hidden">
+        <div class="modal">
+            <h3 style="margin-bottom:20px;">تعبئة الرصيد</h3>
+            <div style="display:flex; gap:10px; margin-bottom:20px;">
+                <button class="net-btn active" id="btn-trc" onclick="setNet('TRC20')">TRC20</button>
+                <button class="net-btn" id="btn-bnb" onclick="setNet('BNB')">BNB</button>
+            </div>
+            <div style="background:#000; padding:15px; border-radius:10px; word-break:break-all; border:1px solid #333;">
+                <small id="net-label" style="color:#888;">شبكة USDT-TRC20</small>
+                <p id="addr" style="font-size:12px; margin:10px 0; color:white;">TD7E5roEGQq4gS3N6L1abw5BW2E6qodCqo</p>
+                <button onclick="alert('تم النسخ')" style="background:var(--accent); border:none; color:white; padding:5px 15px; border-radius:5px; font-size:12px;">نسخ العنوان</button>
+            </div>
+            <button onclick="closeModals()" style="background:none; border:none; color:#666; margin-top:15px;">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- نافذة السحب -->
+    <div id="withdraw-modal" class="overlay hidden">
+        <div class="modal">
+            <h3 style="margin-bottom:10px;">سحب الأرباح</h3>
+            <p style="font-size: 11px; color: var(--text-dim); margin-bottom: 15px;">الحد الأدنى: 5 USDT | العموله: 2%</p>
+            
+            <div style="display:flex; gap:10px; margin-bottom:15px;">
+                <button class="net-btn active" id="w-btn-trc" onclick="setWithdrawNet('TRC20')">TRC20</button>
+                <button class="net-btn" id="w-btn-bnb" onclick="setWithdrawNet('BNB')">BNB</button>
+            </div>
+
+            <input type="text" class="modal-input" placeholder="عنوان المحفظة (USDT)" id="w-address">
+            <input type="number" class="modal-input" placeholder="مبلغ السحب" id="w-amount">
+            <input type="password" class="modal-input" placeholder="كلمة مرور الصندوق" id="w-pass">
+
+            <div style="background:#221a30; padding:10px; border-radius:10px; margin-bottom:15px; text-align: right;">
+                <small style="font-size:10px; color:#8b5cf6; display:block;">سيصلك تقريباً:</small>
+                <b id="w-final" style="font-size:16px;">0.00 USDT</b>
+            </div>
+
+            <button onclick="handleWithdraw()" style="width:100%; padding:15px; border-radius:12px; border:none; background:var(--accent); color:white; font-weight:bold;">تأكيد السحب</button>
+            <button onclick="closeModals()" style="background:none; border:none; color:#666; margin-top:15px;">إغلاق</button>
+        </div>
+    </div>
+
+    <script>
+        let userPhone = "";
+        const wallets = { 'TRC20': 'TD7E5roEGQq4gS3N6L1abw5BW2E6qodCqo', 'BNB': '0xa70850a7d21f63daf498d1a1885692bdda8b1cde' };
+
+        function handleLogin() {
+            const p = document.getElementById('user-phone').value;
+            const c = document.getElementById('country-code').value;
+            if(p.length < 5) return;
+            userPhone = c + p;
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('app').classList.remove('hidden');
+            navTo('home');
+        }
+
+        function navTo(page) {
+            const cont = document.getElementById('main-content');
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById('n-'+page).classList.add('active');
+
+            if(page === 'home') {
+                cont.innerHTML = `
+                <div class="news-bar"><i class="fa-solid fa-bullhorn" style="margin-left:10px;"></i> <marquee>مرحباً بكم في نيوماونت.. تم فتح مهام VIP1 اليومية، اسحب أرباحك الآن!</marquee></div>
+                <div style="padding:15px;">
+                    <img src="https://img.freepik.com/free-photo/oil-refinery-factory-chemical-plant-at-night_1127-3162.jpg" style="width:100%; border-radius:15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                    <div style="display:grid; grid-template-columns: repeat(4, 1fr); margin-top:20px; text-align:center; background:var(--card); padding:15px; border-radius:15px;">
+                        <div onclick="openDeposit()"><i class="fa-solid fa-wallet" style="color:#3b82f6; font-size:24px;"></i><p style="font-size:10px;">إيداع</p></div>
+                        <div onclick="openWithdraw()"><i class="fa-solid fa-money-bill-transfer" style="color:#10b981; font-size:24px;"></i><p style="font-size:10px;">سحب</p></div>
+                        <div><i class="fa-solid fa-share-nodes" style="color:#f59e0b; font-size:24px;"></i><p style="font-size:10px;">دعوة</p></div>
+                        <div><i class="fa-solid fa-file-contract" style="color:#ec4899; font-size:24px;"></i><p style="font-size:10px;">الملف</p></div>
+                    </div>
+                </div>
+                <div class="platform-stats">
+                    <div class="stat-card"><b>120.5M</b><small style="display:block; color:#666; font-size:10px;">إجمالي الإيرادات</small></div>
+                    <div class="stat-card"><b>250K</b><small style="display:block; color:#666; font-size:10px;">المستخدمين النشطين</small></div>
+                </div>
+                <div class="withdraw-list">
+                    <h4 style="margin-right:10px; border-right:3px solid var(--accent); padding-right:10px;">قائمة الأعضاء</h4>
+                    <div class="withdraw-item"><span>00963***442</span> <b style="color:var(--success);">$140.00</b></div>
+                    <div class="withdraw-item"><span>00966***119</span> <b style="color:var(--success);">$2,500.00</b></div>
+                </div>`;
+            } 
+            else if(page === 'task') {
+                cont.innerHTML = `
+                <div class="task-tabs">
+                    <div class="task-tab active">قيد المعالجة (1)</div>
+                    <div class="task-tab" style="color:#666;">مكتمل</div>
+                </div>
+                <div class="task-card">
+                    <div class="task-header"><b>مهمة التعدين اليومية VIP1</b> <span style="color:var(--accent)">$2.00</span></div>
+                    <div style="display:flex; gap:15px; align-items:center;">
+                        <img src="https://via.placeholder.com/60/8b5cf6/fff?text=Task" style="border-radius:10px;">
+                        <div style="flex:1;">
+                            <p style="font-size:12px; margin:0; color:#888;">قم بتأكيد المهمة للحصول على العمولة فوراً</p>
+                        </div>
+                        <button class="task-btn" onclick="alert('تم إرسال المهمة بنجاح')">إرسال</button>
+                    </div>
+                </div>`;
+            }
+            else if(page === 'vip') {
+                cont.innerHTML = `<div class="vip-grid">` + [1,2,3,4,5,6,7,8].map(n => `<div class="vip-card"><img src="https://via.placeholder.com/150/8b5cf6/fff?text=VIP${n}" class="vip-img"><div class="lock-overlay"><i class="fa-solid fa-lock"></i></div><div class="vip-info"><h4>عمولة الطلب</h4><div class="price">$${n*10}.00</div></div></div>`).join('') + `</div>`;
+            } 
+            else if(page === 'me') {
+                cont.innerHTML = `
+                <div class="profile-header">
+                    <div class="p-avatar"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"></div>
+                    <div class="p-info"><b>${userPhone}</b><p>شفرة الدعوة : 333601 <span style="color:var(--accent); border:1px solid; padding:0 5px; border-radius:4px; margin-right:5px; font-size:10px;">نسخ</span></p></div>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-row">
+                        <div class="stat-item"><small>(USDT) المحفظة المرنة</small><b>0.00 ></b></div>
+                        <div class="stat-item"><small>(USDT) المحفظة الإلكترونية</small><b>0.00 ></b></div>
+                    </div>
+                </div>
+                <div class="menu-list">
+                    <div class="menu-link"><i class="fa-solid fa-earth-americas"></i> <span>الموقع الرسمي</span> <i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="menu-link"><i class="fa-solid fa-lock"></i> <span>كلمة سر الدخول</span> <i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="menu-link"><i class="fa-solid fa-receipt"></i> <span>سجلّ الأرباح</span> <i class="fa-solid fa-chevron-left"></i></div>
+                </div>`;
+            }
+        }
+
+        // إعدادات الإيداع
+        function setNet(net) {
+            document.getElementById('btn-trc').className = net === 'TRC20' ? 'net-btn active' : 'net-btn';
+            document.getElementById('btn-bnb').className = net === 'BNB' ? 'net-btn active' : 'net-btn';
+            document.getElementById('net-label').innerText = net === 'TRC20' ? 'شبكة USDT-TRC20' : 'شبكة USDT-BEP20 (BNB)';
+            document.getElementById('addr').innerText = wallets[net];
+        }
+
+        // إعدادات السحب
+        function setWithdrawNet(net) {
+            document.getElementById('w-btn-trc').className = net === 'TRC20' ? 'net-btn active' : 'net-btn';
+            document.getElementById('w-btn-bnb').className = net === 'BNB' ? 'net-btn active' : 'net-btn';
+        }
+
+        // حساب العمولة تلقائياً
+        document.getElementById('w-amount')?.addEventListener('input', function(e) {
+            const val = parseFloat(e.target.value) || 0;
+            const final = val > 0 ? (val * 0.98).toFixed(2) : "0.00";
+            document.getElementById('w-final').innerText = final + " USDT";
+        });
+
+        function handleWithdraw() {
+            const amount = document.getElementById('w-amount').value;
+            const addr = document.getElementById('w-address').value;
+            const pass = document.getElementById('w-pass').value;
+
+            if(amount < 5) return alert("أقل كمية سحب هي 5 USDT");
+            if(addr.length < 10) return alert("يرجى إدخال عنوان محفظة صحيح");
+            if(!pass) return alert("يرجى إدخال كلمة مرور الصندوق");
+            
+            alert("تم تقديم طلب السحب بنجاح! سيتم المراجعة خلال 24 ساعة.");
+            closeModals();
+        }
+
+        function openDeposit() { document.getElementById('deposit-modal').classList.remove('hidden'); }
+        function openWithdraw() { document.getElementById('withdraw-modal').classList.remove('hidden'); }
+        function closeModals() { document.querySelectorAll('.overlay').forEach(m => m.classList.add('hidden')); }
+    </script>
+</body>
+</html>
