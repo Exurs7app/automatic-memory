@@ -828,14 +828,13 @@
         (function() {
             "use strict";
 
-            // ---------- بيانات عامة (مضبوطة على 0 USDT بدقة عالية) ----------
-            let currentBalance = 0.00;          // ✅ رصيد USDT = 0
+            // ---------- بيانات عامة ----------
+            let currentBalance = 0.00;          
             let totalWithdrawn = 0.00;
             let totalDeposited = 0.00;
             let todayEarned = 0.00;
             let totalProfit = 0.00;
             
-            // قائمة المعاملات فارغة بداية
             let transactions = [];
             
             let investorInterval;
@@ -866,7 +865,6 @@
             }
 
             function isStrongPassword(password) {
-                // كلمة مرور قوية: 8 أحرف على الأقل، تحتوي على حرف كبير، حرف صغير، ورقم. بدون رمز خاص.
                 const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
                 return re.test(password);
             }
@@ -1190,7 +1188,6 @@
                 ticker.innerHTML = items.join('') + items.join('');
             }
 
-            // ========== إشعارات السوق الحقيقية (API مباشر) ==========
             async function fetchMarketPrices() {
                 try {
                     const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
@@ -1208,7 +1205,7 @@
                     });
                     return prices;
                 } catch (error) {
-                    console.warn('تعذر جلب الأسعار من Binance, استخدام قيم احتياطية', error);
+                    console.warn('تعذر جلب الأسعار من Binance', error);
                     return {
                         BTC: { price: '68421.50', change: '2.34' },
                         ETH: { price: '3512.80', change: '-0.87' },
@@ -1347,7 +1344,7 @@
                 }
             };
 
-            // ---------- PWA & تثبيت التطبيق (محسّن) ----------
+            // ---------- PWA & تثبيت التطبيق (محسّن ودقيق) ----------
             function registerServiceWorker() {
                 if ('serviceWorker' in navigator) {
                     const swCode = `
@@ -1371,12 +1368,12 @@
                     const blob = new Blob([swCode], { type: 'application/javascript' });
                     const swUrl = URL.createObjectURL(blob);
                     navigator.serviceWorker.register(swUrl).then(reg => {
-                        console.log('Service Worker registered');
-                    }).catch(err => console.log('SW registration failed', err));
+                        console.log('✅ Service Worker registered');
+                    }).catch(err => console.warn('SW registration failed', err));
                 }
             }
 
-            // الاستماع لحدث beforeinstallprompt
+            // الاستماع لحدث beforeinstallprompt (لتثبيت حقيقي)
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
@@ -1430,12 +1427,7 @@
                     });
                 } else {
                     // لا يوجد prompt متاح، نعرض التعليمات
-                    if (isIOS()) {
-                        showInstallInstructions();
-                    } else {
-                        // لمستخدمي أندرويد/كروم الذين لم ينطلق الحدث، نعرض التعليمات أيضاً
-                        showInstallInstructions();
-                    }
+                    showInstallInstructions();
                 }
             };
 
