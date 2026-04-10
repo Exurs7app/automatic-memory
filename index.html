@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>BontX • NEWMONT Ultra</title>
     
-    <!-- أيقونات وتحسينات PWA -->
+    <!-- أيقونات وتحسينات PWA (بأيقونة BontX المخصصة) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="BontX">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#050505">
+    <meta name="theme-color" content="#3b82f6">
     
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
+    <!-- أيقونة SVG مدمجة (BontX) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='256' fill='%233b82f6'/%3E%3Ctext x='256' y='360' font-size='280' font-weight='900' font-family='Arial, sans-serif' fill='white' text-anchor='middle' dominant-baseline='middle'%3EB%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='256' fill='%233b82f6'/%3E%3Ctext x='256' y='360' font-size='280' font-weight='900' font-family='Arial, sans-serif' fill='white' text-anchor='middle' dominant-baseline='middle'%3EB%3C/text%3E%3C/svg%3E">
     
-    <!-- Manifest محسن بصيغة JSON صحيحة -->
-    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22BontX%20PRO%22%2C%22short_name%22%3A%22BontX%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23050505%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F2150%2F2150150.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+    <!-- Manifest محسن بأيقونة BontX -->
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22BontX%20PRO%22%2C%22short_name%22%3A%22BontX%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23050505%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%253D'http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg'%2520viewBox%253D'0%25200%2520512%2520512'%253E%253Ccircle%2520cx%253D'256'%2520cy%253D'256'%2520r%253D'256'%2520fill%253D'%25233b82f6'%252F%253E%253Ctext%2520x%253D'256'%2520y%253D'360'%2520font-size%253D'280'%2520font-weight%253D'900'%2520font-family%253D'Arial%252C%2520sans-serif'%2520fill%253D'white'%2520text-anchor%253D'middle'%2520dominant-baseline%253D'middle'%253EB%253C%252Ftext%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1325,8 +1326,7 @@
                         const urlsToCache = [
                             '.',
                             'index.html',
-                            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-                            'https://cdn-icons-png.flaticon.com/512/2150/2150150.png'
+                            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
                         ];
                         self.addEventListener('install', event => {
                             event.waitUntil(
@@ -1390,4 +1390,4 @@
         })();
     </script>
 </body>
-</html>
+    </html>
