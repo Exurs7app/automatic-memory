@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -524,21 +524,6 @@
         }
         .price-up { color: var(--success); }
         .price-down { color: var(--danger); }
-
-        /* تنسيق خاص لخيار تذكرني */
-        .remember-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 15px 0 20px;
-            color: var(--text-dim);
-            font-size: 14px;
-        }
-        .remember-row input {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--accent);
-        }
     </style>
 </head>
 <body>
@@ -546,7 +531,7 @@
     <div id="toast"></div>
 
     <!-- صفحات الدخول والتسجيل -->
-    <div id="login-page">
+    <div id="login-page" class="hidden">
         <div class="login-container fade-in">
             <div style="text-align: center; margin-bottom: 30px;">
                 <i class="fa-solid fa-gem" style="font-size: 50px; color: var(--accent); margin-bottom: 15px;"></i>
@@ -559,19 +544,12 @@
                     <input type="email" id="login-email" placeholder="البريد الإلكتروني" style="background: none; border: none; color: white; outline: none; width: 100%;">
                 </div>
             </div>
-            <div class="input-group" style="margin-bottom: 10px;">
+            <div class="input-group" style="margin-bottom: 25px;">
                 <div style="background: #000; border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; gap: 10px;">
                     <i class="fa-solid fa-lock" style="color: var(--accent);"></i>
                     <input type="password" id="login-pass" placeholder="كلمة المرور" style="background: none; border: none; color: white; outline: none; width: 100%;">
                 </div>
             </div>
-            
-            <!-- خيار تذكرني -->
-            <div class="remember-row">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">تذكرني (حفظ بيانات الدخول)</label>
-            </div>
-            
             <button class="btn-main btn-pulse" onclick="handleLogin()">دخول آمن <i class="fa-solid fa-shield-check"></i></button>
 
             <div style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-dim);">
@@ -890,44 +868,10 @@
                 return findUserByEmail(email);
             }
 
-            // ========== دوال حفظ واستعادة بيانات تذكرني ==========
-            function saveRememberedCredentials(email, password) {
-                // تشفير بسيط Base64 (ليس آمناً تماماً لكن للعرض فقط)
-                const encodedPass = btoa(password);
-                localStorage.setItem('remembered_email', email);
-                localStorage.setItem('remembered_pass', encodedPass);
-                localStorage.setItem('remember_me', 'true');
-            }
-
-            function clearRememberedCredentials() {
-                localStorage.removeItem('remembered_email');
-                localStorage.removeItem('remembered_pass');
-                localStorage.removeItem('remember_me');
-            }
-
-            function loadRememberedCredentials() {
-                const email = localStorage.getItem('remembered_email');
-                const encodedPass = localStorage.getItem('remembered_pass');
-                const remember = localStorage.getItem('remember_me') === 'true';
-                if (remember && email && encodedPass) {
-                    try {
-                        const password = atob(encodedPass);
-                        document.getElementById('login-email').value = email;
-                        document.getElementById('login-pass').value = password;
-                        document.getElementById('remember-me').checked = true;
-                    } catch(e) {
-                        clearRememberedCredentials();
-                    }
-                } else {
-                    document.getElementById('remember-me').checked = false;
-                }
-            }
-
             // ========== دوال تسجيل الدخول والتسجيل ==========
             window.handleLogin = function() {
                 const email = document.getElementById('login-email').value.trim();
                 const pass = document.getElementById('login-pass').value;
-                const rememberMe = document.getElementById('remember-me').checked;
 
                 if (!email || !pass) {
                     showToast("⚠️ الرجاء إدخال البريد الإلكتروني وكلمة المرور", "#ef4444");
@@ -946,14 +890,6 @@
                     showToast("❌ كلمة المرور غير صحيحة", "#ef4444");
                     return;
                 }
-                
-                // حفظ بيانات الدخول إذا تم اختيار تذكرني
-                if (rememberMe) {
-                    saveRememberedCredentials(email, pass);
-                } else {
-                    clearRememberedCredentials();
-                }
-                
                 showToast("✅ تم تسجيل الدخول بنجاح", "#10b981");
                 localStorage.setItem('logged', 'true');
                 localStorage.setItem('user_email', email);
@@ -992,10 +928,6 @@
                 const joinDate = new Date().toLocaleDateString('ar-EG');
                 const newUser = { email, password: pass, joinDate, inviteCode: invite || "لا يوجد" };
                 saveUser(newUser);
-                
-                // حفظ بيانات الدخول تلقائياً بعد التسجيل (يمكن تفعيل تذكرني لاحقاً)
-                clearRememberedCredentials(); // نبدأ جلسة جديدة بدون تذكر تلقائي
-                
                 showToast("✅ تم إنشاء الحساب بنجاح", "#10b981");
                 localStorage.setItem('logged', 'true');
                 localStorage.setItem('user_email', email);
@@ -1085,11 +1017,6 @@
                 document.getElementById('signup-page').classList.add('hidden');
                 document.getElementById('app').classList.add('hidden');
                 document.getElementById(pageId).classList.remove('hidden');
-                
-                // عند إظهار صفحة الدخول، نقوم بتحميل بيانات التذكر إن وجدت
-                if (pageId === 'login-page') {
-                    loadRememberedCredentials();
-                }
             };
 
             function updateWithdrawFeeDisplay() {
@@ -1221,8 +1148,6 @@
             window.logout = function() { 
                 localStorage.removeItem('logged');
                 localStorage.removeItem('user_email');
-                // لا نمسح بيانات التذكر إلا إذا أراد المستخدم ذلك، لكن يمكن مسحها عند تسجيل الخروج الصريح
-                // سنبقي خيار التذكر لكن نعرض صفحة الدخول
                 location.reload(); 
             };
 
@@ -1465,12 +1390,11 @@
                     showPage('app');
                     navTo('home');
                 } else {
-                    showPage('login-page');
-                    // تحميل بيانات التذكر عند عرض صفحة الدخول
-                    loadRememberedCredentials();
+                    // ⭐ عند أول دخول: عرض صفحة إنشاء حساب جديد بدلاً من تسجيل الدخول
+                    showPage('signup-page');
                 }
             };
         })();
     </script>
 </body>
-    </html>
+                </html>
