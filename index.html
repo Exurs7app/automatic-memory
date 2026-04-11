@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>BontX • NEWMONT Ultra</title>
     
-    <!-- أيقونات وتحسينات PWA (بأيقونة BontX المخصصة) -->
+    <!-- أيقونات وتحسينات PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="BontX">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#3b82f6">
+    <meta name="theme-color" content="#050505">
     
-    <!-- أيقونة SVG مدمجة (BontX) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='256' fill='%233b82f6'/%3E%3Ctext x='256' y='360' font-size='280' font-weight='900' font-family='Arial, sans-serif' fill='white' text-anchor='middle' dominant-baseline='middle'%3EB%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='256' fill='%233b82f6'/%3E%3Ctext x='256' y='360' font-size='280' font-weight='900' font-family='Arial, sans-serif' fill='white' text-anchor='middle' dominant-baseline='middle'%3EB%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
     
-    <!-- Manifest محسن بأيقونة BontX -->
-    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22BontX%20PRO%22%2C%22short_name%22%3A%22BontX%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23050505%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%253D'http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg'%2520viewBox%253D'0%25200%2520512%2520512'%253E%253Ccircle%2520cx%253D'256'%2520cy%253D'256'%2520r%253D'256'%2520fill%253D'%25233b82f6'%252F%253E%253Ctext%2520x%253D'256'%2520y%253D'360'%2520font-size%253D'280'%2520font-weight%253D'900'%2520font-family%253D'Arial%252C%2520sans-serif'%2520fill%253D'white'%2520text-anchor%253D'middle'%2520dominant-baseline%253D'middle'%253EB%253C%252Ftext%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+    <!-- Manifest محسن بصيغة JSON صحيحة -->
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22BontX%20PRO%22%2C%22short_name%22%3A%22BontX%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23050505%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F2150%2F2150150.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -764,61 +763,32 @@
         </div>
     </div>
 
-    <!-- مودال تعليمات التثبيت لنظام iOS وكروم عند عدم ظهور prompt -->
+    <!-- مودال تعليمات التثبيت لنظام iOS -->
     <div id="install-instructions-modal" class="overlay hidden">
         <div class="modal">
             <i class="fa-solid fa-xmark close-modal" onclick="closeModals()"></i>
-            <h3 style="text-align:center; margin-top:0;"><i class="fa-solid fa-mobile-screen" style="margin-left: 8px;"></i> تثبيت التطبيق</h3>
+            <h3 style="text-align:center; margin-top:0;"><i class="fa-brands fa-apple" style="margin-left: 8px;"></i> تثبيت التطبيق</h3>
             <div style="padding: 10px 0;">
-                <p style="font-size: 14px; margin-bottom: 20px; font-weight: bold;">لتثبيت BontX على شاشتك الرئيسية:</p>
-                
-                <!-- تعليمات خاصة بـ iOS -->
-                <div id="ios-instructions" style="display: none;">
-                    <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
-                        <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-square-arrow-up-right" style="font-size: 24px; color: var(--accent);"></i>
-                        </div>
-                        <span>1. اضغط على زر <strong>مشاركة</strong> في شريط المتصفح (مربع مع سهم للأعلى).</span>
+                <p style="font-size: 14px; margin-bottom: 20px;">لتثبيت BontX على شاشتك الرئيسية:</p>
+                <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
+                    <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-square-arrow-up-right" style="font-size: 24px; color: var(--accent);"></i>
                     </div>
-                    <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
-                        <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-plus" style="font-size: 24px; color: var(--accent);"></i>
-                        </div>
-                        <span>2. اختر <strong>"إضافة إلى الشاشة الرئيسية"</strong>.</span>
-                    </div>
-                    <div style="display: flex; gap: 15px; margin-bottom: 10px; align-items: center;">
-                        <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-check" style="font-size: 24px; color: var(--success);"></i>
-                        </div>
-                        <span>3. اضغط <strong>إضافة</strong> وسيظهر التطبيق على الشاشة.</span>
-                    </div>
+                    <span>1. اضغط على زر <strong>مشاركة</strong> في شريط المتصفح (مربع مع سهم للأعلى).</span>
                 </div>
-                
-                <!-- تعليمات خاصة بـ Android / Chrome -->
-                <div id="android-instructions">
-                    <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
-                        <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-ellipsis-vertical" style="font-size: 24px; color: var(--accent);"></i>
-                        </div>
-                        <span>1. اضغط على قائمة المتصفح (⋮) في الأعلى.</span>
+                <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
+                    <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-plus" style="font-size: 24px; color: var(--accent);"></i>
                     </div>
-                    <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
-                        <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-download" style="font-size: 24px; color: var(--accent);"></i>
-                        </div>
-                        <span>2. اختر <strong>"تثبيت التطبيق"</strong> أو <strong>"إضافة إلى الشاشة الرئيسية"</strong>.</span>
-                    </div>
-                    <div style="display: flex; gap: 15px; margin-bottom: 10px; align-items: center;">
-                        <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-check" style="font-size: 24px; color: var(--success);"></i>
-                        </div>
-                        <span>3. اتبع التعليمات لتثبيت BontX.</span>
-                    </div>
+                    <span>2. اختر <strong>"إضافة إلى الشاشة الرئيسية"</strong>.</span>
                 </div>
-                
-                <p style="font-size: 12px; color: var(--text-dim); margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                    💡 إذا لم تظهر خيارات التثبيت، تأكد من أنك تستخدم متصفح Chrome أو Safari حديث.
-                </p>
+                <div style="display: flex; gap: 15px; margin-bottom: 10px; align-items: center;">
+                    <div style="background: #1e293b; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-check" style="font-size: 24px; color: var(--success);"></i>
+                    </div>
+                    <span>3. اضغط <strong>إضافة</strong> وسيظهر التطبيق على الشاشة.</span>
+                </div>
+                <p style="font-size: 12px; color: var(--text-dim); margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">💡 بالنسبة لأندرويد أو Chrome، اضغط على "تثبيت التطبيق" مرة أخرى بعد الإغلاق لتظهر نافذة التثبيت التلقائي.</p>
             </div>
             <button class="btn-main" onclick="closeModals()" style="margin-top: 10px;">حسناً، فهمت</button>
         </div>
@@ -1347,15 +1317,16 @@
                 }
             };
 
-            // ---------- PWA & تثبيت التطبيق (محسّن) ----------
+            // ---------- PWA & تثبيت التطبيق ----------
             function registerServiceWorker() {
                 if ('serviceWorker' in navigator) {
                     const swCode = `
-                        const CACHE_NAME = 'bontx-v2';
+                        const CACHE_NAME = 'bontx-v1';
                         const urlsToCache = [
                             '.',
                             'index.html',
-                            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+                            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+                            'https://cdn-icons-png.flaticon.com/512/2150/2150150.png'
                         ];
                         self.addEventListener('install', event => {
                             event.waitUntil(
@@ -1376,70 +1347,37 @@
                 }
             }
 
-            // الاستماع لحدث beforeinstallprompt
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
-                console.log('✅ beforeinstallprompt captured');
             });
 
-            // التحقق مما إذا كان التطبيق مثبتاً بالفعل
-            function isAppInstalled() {
-                return window.matchMedia('(display-mode: standalone)').matches || 
-                       window.navigator.standalone === true;
-            }
-
-            // الكشف عن نظام iOS
-            function isIOS() {
-                return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            }
-
-            // دالة عرض تعليمات التثبيت المناسبة
-            function showInstallInstructions() {
-                const modal = document.getElementById('install-instructions-modal');
-                const iosDiv = document.getElementById('ios-instructions');
-                const androidDiv = document.getElementById('android-instructions');
-                
-                if (isIOS()) {
-                    iosDiv.style.display = 'block';
-                    androidDiv.style.display = 'none';
-                } else {
-                    iosDiv.style.display = 'none';
-                    androidDiv.style.display = 'block';
-                }
-                modal.classList.remove('hidden');
-            }
-
-            // الدالة الرئيسية التي تستدعى عند الضغط على زر التثبيت
             window.triggerInstallOrInstructions = function() {
-                if (isAppInstalled()) {
+                // التحقق مما إذا كان التطبيق يعمل في وضع standalone (مثبت بالفعل)
+                if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
                     showToast('✅ التطبيق مثبت بالفعل على جهازك', '#10b981');
                     return;
                 }
                 
-                // إذا كان المتصفح يدعم التثبيت التلقائي (Chrome/Edge على أندرويد/سطح مكتب)
                 if (deferredPrompt) {
                     deferredPrompt.prompt();
                     deferredPrompt.userChoice.then((choiceResult) => {
                         if (choiceResult.outcome === 'accepted') {
                             showToast('🎉 جاري تثبيت التطبيق...', '#10b981');
-                        } else {
-                            showToast('ℹ️ يمكنك التثبيت لاحقاً من قائمة المتصفح', '#f59e0b');
                         }
                         deferredPrompt = null;
                     });
                 } else {
-                    // لا يوجد prompt متاح، نعرض التعليمات
-                    if (isIOS()) {
-                        showInstallInstructions();
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                    if (isIOS) {
+                        document.getElementById('install-instructions-modal').classList.remove('hidden');
                     } else {
-                        // لمستخدمي أندرويد/كروم الذين لم ينطلق الحدث، نعرض التعليمات أيضاً
-                        showInstallInstructions();
+                        // لمستخدمي أندرويد/كروم الذين لم يظهر لهم الحدث، نوجههم لاستخدام القائمة
+                        showToast('ℹ️ اضغط على ⋮ (القائمة) ثم "تثبيت التطبيق" أو "إضافة إلى الشاشة الرئيسية"', '#f59e0b');
                     }
                 }
             };
 
-            // بدء التشغيل
             window.onload = function() {
                 registerServiceWorker();
                 if (localStorage.getItem('logged') === 'true') {
@@ -1448,13 +1386,8 @@
                 } else {
                     showPage('login-page');
                 }
-                
-                // إظهار رسالة ترحيبية إذا كان التطبيق مثبتاً
-                if (isAppInstalled()) {
-                    setTimeout(() => showToast('👋 أهلاً بك في تطبيق BontX', '#3b82f6'), 1000);
-                }
             };
         })();
     </script>
 </body>
-</html>
+    </html>
