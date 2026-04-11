@@ -615,15 +615,11 @@
 
         <div id="main-content" style="padding-bottom: 110px;"></div>
 
-        <!-- شريط التنقل السفلي -->
+        <!-- شريط التنقل السفلي (تم حذف VIP) -->
         <nav class="nav">
             <div class="nav-item" id="nav-home" onclick="handleNavAction('home')">
                 <i class="fa-solid fa-house"></i>
                 <span>البيت</span>
-            </div>
-            <div class="nav-item" id="nav-vip" onclick="handleNavAction('vip')">
-                <i class="fa-solid fa-crown"></i>
-                <span>Vip</span>
             </div>
             <div class="nav-item" id="nav-wallet" onclick="handleNavAction('wallet')">
                 <i class="fa-solid fa-wallet"></i>
@@ -812,7 +808,7 @@
             let investorInterval;
             let depTimerInterval = null;
             let selectedWithdrawNet = 'TRC';
-            let currentVIPLevel = 3;
+            let currentVIPLevel = 3; // يبقى للعرض فقط في صفحة الحساب
             let currentNetwork = 'TRC';
             let marketUpdateInterval = null;
             
@@ -982,19 +978,6 @@
                 return userID;
             }
 
-            const vipsData = [
-                {l:1, p:55, d:65.0, icon:'fa-crown', color:'var(--success)', special: true},
-                {l:2, p:100, d:28.0, icon:'fa-gem', color:'var(--border)'},
-                {l:3, p:250, d:75.0, icon:'fa-gem', color:'var(--border)'},
-                {l:4, p:600, d:185.0, icon:'fa-gem', color:'var(--border)'},
-                {l:5, p:1200, d:380.0, icon:'fa-gem', color:'var(--border)'},
-                {l:6, p:2500, d:820.0, icon:'fa-gem', color:'var(--border)'},
-                {l:7, p:5000, d:1750.0, icon:'fa-gem', color:'var(--border)'},
-                {l:8, p:10000, d:3600.0, icon:'fa-gem', color:'var(--border)'},
-                {l:9, p:20000, d:7500.0, icon:'fa-gem', color:'var(--border)'},
-                {l:10, p:45000, d:16000.0, icon:'fa-gem', color:'var(--border)'}
-            ];
-
             window.showToast = function(msg, color = "#3b82f6") {
                 const t = document.getElementById('toast');
                 t.style.background = color; 
@@ -1135,15 +1118,6 @@
                 }, 1000); 
             }
             
-            window.handleVIPTask = function(price) {
-                if (currentBalance < price) {
-                    showToast("⚠️ الرصيد غير كافي", "#ef4444");
-                    setTimeout(() => { openDeposit(); }, 800);
-                } else {
-                    showToast("✅ تم تفعيل المهمة بنجاح", "#10b981");
-                }
-            };
-            
             window.openTelegram = function() { window.open('https://t.me/BontX_bot', '_blank'); };
             window.logout = function() { 
                 localStorage.removeItem('logged');
@@ -1231,7 +1205,6 @@
                 document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
                 switch(action) {
                     case 'home': document.getElementById('nav-home').classList.add('active'); navTo('home'); break;
-                    case 'vip': document.getElementById('nav-vip').classList.add('active'); navTo('vip'); break;
                     case 'wallet': document.getElementById('nav-wallet').classList.add('active'); openWithdraw(); break;
                     case 'trade': document.getElementById('nav-trade').classList.add('active'); openSyncModal(); break;
                     case 'chart': document.getElementById('nav-chart').classList.add('active'); document.getElementById('chart-modal').classList.remove('hidden'); break;
@@ -1285,20 +1258,6 @@
                         if(ethEl) ethEl.innerText = '$' + prices.ETH.price;
                         if(solEl) solEl.innerText = '$' + prices.SOL.price;
                     }, 500);
-                } else if(page === 'vip') {
-                    let html = `<div style="padding:20px;"><h3>باقات VIP</h3>`;
-                    vipsData.forEach(v => html += `
-                        <div class="card">
-                            <div style="display:flex; justify-content:space-between;">
-                                <span>VIP ${v.l} - ${v.p}$</span>
-                                <span style="color:var(--success);">+${v.d}$ يومياً</span>
-                            </div>
-                            <button class="btn-main" onclick="handleVIPTask(${v.p})">
-                                ${currentVIPLevel===v.l ? 'مفعل' : 'تفعيل'}
-                            </button>
-                        </div>
-                    `);
-                    cont.innerHTML = html + `</div>`;
                 } else if(page === 'me') {
                     const currentUser = getCurrentUser();
                     const userEmail = currentUser ? currentUser.email : (localStorage.getItem('user_email') || 'مستخدم');
@@ -1396,4 +1355,4 @@
         })();
     </script>
 </body>
-</html>
+    </html>
