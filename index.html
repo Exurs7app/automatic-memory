@@ -12,12 +12,11 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#050505">
     
-    <!-- صورة جديدة للتطبيق عند التثبيت (أيقونة رئيسية) -->
-    <link rel="icon" type="image/png" sizes="512x512" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
     
-    <!-- Manifest محسّن مع الأيقونة الجديدة (192x192 و 512x512) -->
-    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22BontX%20PRO%22%2C%22short_name%22%3A%22BontX%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23050505%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F3135%2F3135715.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%2C%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F3135%2F3135715.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+    <!-- Manifest محسن -->
+    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22BontX%20PRO%22,%22short_name%22:%22BontX%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23050505%22,%22theme_color%22:%22%233b82f6%22,%22icons%22:[{%22src%22:%22https://cdn-icons-png.flaticon.com/512/2150/2150150.png%22,%22sizes%22:%22512x512%22,%22type%22:%22image/png%22}]}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -382,6 +381,7 @@
             margin-top: 8px;
         }
 
+        /* تنسيق قائمة المستثمرين */
         .investor-item {
             display: flex;
             justify-content: space-between;
@@ -421,6 +421,7 @@
             color: var(--success);
         }
 
+        /* إضافات لصفحة الحساب المفصلة */
         .account-section-title {
             font-size: 16px;
             margin: 20px 0 12px;
@@ -464,6 +465,7 @@
         }
         .btn-outline:active { background: var(--accent); border-color: var(--accent); }
 
+        /* أنماط جديدة للباركود */
         .qr-container {
             background: white;
             padding: 12px;
@@ -498,6 +500,7 @@
             font-weight: bold;
         }
         
+        /* زر تثبيت التطبيق */
         .install-btn {
             background: linear-gradient(145deg, #1e293b, #0f172a);
             border: 1px solid var(--accent);
@@ -508,6 +511,7 @@
             color: var(--accent-light);
         }
 
+        /* شريط الإشعارات السوقية الحية */
         .market-ticker-content {
             display: flex;
             align-items: center;
@@ -524,110 +528,6 @@
         }
         .price-up { color: var(--success); }
         .price-down { color: var(--danger); }
-
-        /* تنسيق خاص لبطاقة الصورة المرفقة */
-        .vip-promo-card {
-            background: linear-gradient(145deg, #1a1f2e, #0e121c);
-            border: 1px solid var(--gold);
-            border-radius: 20px;
-            padding: 18px 16px;
-            margin-bottom: 18px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-            position: relative;
-            overflow: hidden;
-        }
-        .vip-promo-card::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100px;
-            height: 100px;
-            background: var(--gold);
-            filter: blur(60px);
-            opacity: 0.2;
-        }
-        .promo-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        .promo-logo {
-            font-weight: 900;
-            font-size: 22px;
-            color: var(--gold);
-            text-shadow: 0 0 8px rgba(245,158,11,0.5);
-        }
-        .promo-followers {
-            background: rgba(255,255,255,0.05);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 13px;
-            color: #ccc;
-        }
-        .promo-quote {
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 1.5;
-            margin: 15px 0 10px;
-            color: #f0f0f0;
-            text-align: center;
-            border-right: 3px solid var(--gold);
-            padding-right: 12px;
-        }
-        .promo-emoji {
-            font-size: 20px;
-            letter-spacing: 4px;
-            text-align: center;
-            margin: 5px 0;
-        }
-        .promo-code-section {
-            background: rgba(0,0,0,0.4);
-            border-radius: 16px;
-            padding: 12px 15px;
-            margin-top: 15px;
-            border: 1px dashed var(--gold);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .promo-code-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--gold);
-        }
-        .promo-code-value {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            background: #000;
-            padding: 6px 15px;
-            border-radius: 12px;
-            text-align: center;
-            color: white;
-            border: 1px solid var(--accent);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .promo-code-value:active { background: var(--accent); }
-        .promo-details {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            color: var(--text-dim);
-            margin-top: 6px;
-        }
-        .promo-footer {
-            margin-top: 12px;
-            font-size: 12px;
-            color: var(--text-dim);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
     </style>
 </head>
 <body>
@@ -900,628 +800,582 @@
     </div>
 
     <script>
-        (function() {
-            "use strict";
+        // ---------- بيانات عامة ----------
+        let currentBalance = 12450.75; // رصيد افتراضي للعرض
+        let totalWithdrawn = 3890.50;
+        let totalDeposited = 16500.00;
+        let todayEarned = 124.30;
+        let totalProfit = 124.30;
+        let transactions = [
+            { type: 'إيداع (TRC20)', date: new Date().toLocaleString('ar-EG'), status: 'مكتمل', color: '#10b981', amount: '+5000.00' },
+            { type: 'سحب (TRC20)', date: new Date().toLocaleString('ar-EG'), status: 'مكتمل', color: '#ef4444', amount: '-750.00' }
+        ];
+        let investorInterval;
+        let depTimerInterval = null;
+        let selectedWithdrawNet = 'TRC';
+        let currentVIPLevel = 3;
+        let currentNetwork = 'TRC';
+        let marketUpdateInterval = null;
+        
+        // خاصية تثبيت PWA
+        let deferredPrompt = null;
+        
+        const networkFees = {
+            'TRC': 1.00,
+            'BNB': 0.80
+        };
 
-            // ---------- بيانات عامة (مضبوطة على 0 USDT بدقة عالية) ----------
-            let currentBalance = 0.00;          // ✅ رصيد USDT = 0
-            let totalWithdrawn = 0.00;
-            let totalDeposited = 0.00;
-            let todayEarned = 0.00;
-            let totalProfit = 0.00;
-            
-            // قائمة المعاملات فارغة بداية
-            let transactions = [];
-            
-            let investorInterval;
-            let depTimerInterval = null;
-            let selectedWithdrawNet = 'TRC';
-            let currentVIPLevel = 3;
-            let currentNetwork = 'TRC';
-            let marketUpdateInterval = null;
-            
-            // خاصية تثبيت PWA
-            let deferredPrompt = null;
-            
-            const networkFees = {
-                'TRC': 1.00,
-                'BNB': 0.80
-            };
+        const wallets = { 
+            'TRC': 'TC7CaezvbGSNzqXPWp4NLAMS8W6DHmbrz8', 
+            'BNB': '0x42a3ca67f332f5f31608342a12fd8d2dcf268702' 
+        };
+        const sessionInviteCode = "BNT" + Math.floor(100000 + Math.random() * 900000);
 
-            const wallets = { 
-                'TRC': 'TC7CaezvbGSNzqXPWp4NLAMS8W6DHmbrz8', 
-                'BNB': '0x42a3ca67f332f5f31608342a12fd8d2dcf268702' 
-            };
-            const sessionInviteCode = "BNT" + Math.floor(100000 + Math.random() * 900000);
+        // ========== دوال التحقق من صحة البيانات ==========
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
 
-            // ========== دوال التحقق من صحة البيانات ==========
-            function isValidEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
+        // تم تعديل هذه الدالة: إزالة شرط وجود رمز خاص
+        function isStrongPassword(password) {
+            // كلمة مرور قوية: 8 أحرف على الأقل، تحتوي على حرف كبير، حرف صغير، ورقم. بدون رمز خاص.
+            const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            return re.test(password);
+        }
+
+        function getUsers() {
+            const users = localStorage.getItem('bontx_users');
+            return users ? JSON.parse(users) : [];
+        }
+
+        function saveUser(user) {
+            const users = getUsers();
+            users.push(user);
+            localStorage.setItem('bontx_users', JSON.stringify(users));
+        }
+
+        function findUserByEmail(email) {
+            const users = getUsers();
+            return users.find(u => u.email === email);
+        }
+
+        function getCurrentUser() {
+            const email = localStorage.getItem('user_email');
+            if (!email) return null;
+            return findUserByEmail(email);
+        }
+
+        // ========== دوال تسجيل الدخول والتسجيل ==========
+        function handleLogin() {
+            const email = document.getElementById('login-email').value.trim();
+            const pass = document.getElementById('login-pass').value;
+
+            if (!email || !pass) {
+                showToast("⚠️ الرجاء إدخال البريد الإلكتروني وكلمة المرور", "#ef4444");
+                return;
             }
-
-            function isStrongPassword(password) {
-                // كلمة مرور قوية: 8 أحرف على الأقل، تحتوي على حرف كبير، حرف صغير، ورقم. بدون رمز خاص.
-                const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
-                return re.test(password);
+            if (!isValidEmail(email)) {
+                showToast("❌ تنسيق البريد الإلكتروني غير صحيح", "#ef4444");
+                return;
             }
-
-            function getUsers() {
-                const users = localStorage.getItem('bontx_users');
-                return users ? JSON.parse(users) : [];
+            const user = findUserByEmail(email);
+            if (!user) {
+                showToast("❌ البريد الإلكتروني غير مسجل", "#ef4444");
+                return;
             }
-
-            function saveUser(user) {
-                const users = getUsers();
-                users.push(user);
-                localStorage.setItem('bontx_users', JSON.stringify(users));
+            if (user.password !== pass) {
+                showToast("❌ كلمة المرور غير صحيحة", "#ef4444");
+                return;
             }
+            showToast("✅ تم تسجيل الدخول بنجاح", "#10b981");
+            localStorage.setItem('logged', 'true');
+            localStorage.setItem('user_email', email);
+            setTimeout(() => {
+                showPage('app');
+                navTo('home');
+            }, 500);
+        }
 
-            function findUserByEmail(email) {
-                const users = getUsers();
-                return users.find(u => u.email === email);
+        function handleSignup() {
+            const email = document.getElementById('reg-email').value.trim();
+            const pass = document.getElementById('reg-pass').value;
+            const passConfirm = document.getElementById('reg-pass-confirm').value;
+            const invite = document.getElementById('reg-invite').value.trim();
+
+            if (!email || !pass || !passConfirm) {
+                showToast("⚠️ أكمل جميع الحقول المطلوبة", "#ef4444");
+                return;
             }
-
-            function getCurrentUser() {
-                const email = localStorage.getItem('user_email');
-                if (!email) return null;
-                return findUserByEmail(email);
+            if (!isValidEmail(email)) {
+                showToast("❌ تنسيق البريد الإلكتروني غير صحيح", "#ef4444");
+                return;
             }
-
-            // ========== دوال تسجيل الدخول والتسجيل ==========
-            window.handleLogin = function() {
-                const email = document.getElementById('login-email').value.trim();
-                const pass = document.getElementById('login-pass').value;
-
-                if (!email || !pass) {
-                    showToast("⚠️ الرجاء إدخال البريد الإلكتروني وكلمة المرور", "#ef4444");
-                    return;
-                }
-                if (!isValidEmail(email)) {
-                    showToast("❌ تنسيق البريد الإلكتروني غير صحيح", "#ef4444");
-                    return;
-                }
-                const user = findUserByEmail(email);
-                if (!user) {
-                    showToast("❌ البريد الإلكتروني غير مسجل", "#ef4444");
-                    return;
-                }
-                if (user.password !== pass) {
-                    showToast("❌ كلمة المرور غير صحيحة", "#ef4444");
-                    return;
-                }
-                showToast("✅ تم تسجيل الدخول بنجاح", "#10b981");
-                localStorage.setItem('logged', 'true');
-                localStorage.setItem('user_email', email);
-                setTimeout(() => {
-                    showPage('app');
-                    navTo('home');
-                }, 500);
-            };
-
-            window.handleSignup = function() {
-                const email = document.getElementById('reg-email').value.trim();
-                const pass = document.getElementById('reg-pass').value;
-                const passConfirm = document.getElementById('reg-pass-confirm').value;
-                const invite = document.getElementById('reg-invite').value.trim();
-
-                if (!email || !pass || !passConfirm) {
-                    showToast("⚠️ أكمل جميع الحقول المطلوبة", "#ef4444");
-                    return;
-                }
-                if (!isValidEmail(email)) {
-                    showToast("❌ تنسيق البريد الإلكتروني غير صحيح", "#ef4444");
-                    return;
-                }
-                if (!isStrongPassword(pass)) {
-                    showToast("❌ كلمة المرور يجب أن تكون 8 أحرف على الأقل وتحتوي على حرف كبير وصغير ورقم", "#ef4444");
-                    return;
-                }
-                if (pass !== passConfirm) {
-                    showToast("❌ كلمتا المرور غير متطابقتين", "#ef4444");
-                    return;
-                }
-                if (findUserByEmail(email)) {
-                    showToast("❌ هذا البريد الإلكتروني مسجل بالفعل", "#ef4444");
-                    return;
-                }
-                const joinDate = new Date().toLocaleDateString('ar-EG');
-                const newUser = { email, password: pass, joinDate, inviteCode: invite || "لا يوجد" };
-                saveUser(newUser);
-                showToast("✅ تم إنشاء الحساب بنجاح", "#10b981");
-                localStorage.setItem('logged', 'true');
-                localStorage.setItem('user_email', email);
-                setTimeout(() => {
-                    showPage('app');
-                    navTo('home');
-                }, 800);
-            };
-
-            // ========== أسماء أجنبية ==========
-            const foreignFirstNames = ["James","John","Robert","Michael","William","David","Richard","Joseph","Thomas","Charles","Christopher","Daniel","Matthew","Anthony","Mark","Donald","Steven","Paul","Andrew","Joshua","Kenneth","Kevin","Brian","George","Edward","Ronald","Timothy","Jason","Jeffrey","Ryan","Jacob","Gary","Nicholas","Eric","Jonathan","Stephen","Larry","Justin","Scott","Brandon","Benjamin","Samuel","Frank","Gregory","Raymond","Alexander","Patrick","Jack","Dennis","Jerry","Tyler","Aaron","Jose","Henry","Adam","Douglas","Nathan","Peter","Zachary","Kyle","Walter","Harold","Jeremy","Ethan","Carl","Keith","Roger","Gerald","Christian","Terry","Sean","Arthur","Austin","Noah","Jesse","Joe","Bryan","Billy","Jordan","Albert","Dylan","Bruce","Willie","Gabriel","Alan","Juan","Logan","Wayne","Ralph","Roy","Eugene","Vincent","Randy","Russell","Louis","Philip","Bobby","Johnny","Bradley","Cody","Emma","Olivia","Ava","Isabella","Sophia","Mia","Charlotte","Amelia","Harper","Evelyn","Abigail","Emily","Elizabeth","Sofia","Avery","Ella","Madison","Scarlett","Victoria","Aria","Grace","Chloe","Camila","Penelope","Riley","Layla","Lillian","Nora","Zoey","Mila","Aubrey","Hannah","Lily","Addison","Eleanor","Natalie","Luna","Savannah","Brooklyn","Leah","Zoe","Stella","Hazel","Ellie","Paisley","Audrey","Skylar","Violet","Claire"];
-            const foreignLastNames = ["Smith","Johnson","Williams","Brown","Jones","Garcia","Miller","Davis","Rodriguez","Martinez","Hernandez","Lopez","Gonzalez","Wilson","Anderson","Thomas","Taylor","Moore","Jackson","Martin","Lee","Perez","Thompson","White","Harris","Sanchez","Clark","Ramirez","Lewis","Robinson","Walker","Young","Allen","King","Wright","Scott","Torres","Nguyen","Hill","Flores","Green","Adams","Nelson","Baker","Hall","Rivera","Campbell","Mitchell","Carter","Roberts","Gomez","Phillips","Evans","Turner","Diaz","Parker","Cruz","Edwards","Collins","Reyes","Stewart","Morris","Morales","Murphy","Cook","Rogers","Gutierrez","Ortiz","Morgan","Cooper","Peterson","Bailey","Reed","Kelly","Howard","Ramos","Kim","Cox","Ward","Richardson","Watson","Brooks","Chavez","Wood","James","Bennett","Gray","Mendoza","Ruiz","Hughes","Price","Alvarez","Castillo","Sanders","Patel","Myers","Long","Ross","Foster","Jimenez"];
-
-            function generateForeignName() {
-                const firstName = foreignFirstNames[Math.floor(Math.random() * foreignFirstNames.length)];
-                const lastName = foreignLastNames[Math.floor(Math.random() * foreignLastNames.length)];
-                if (Math.random() > 0.5) {
-                    const middleInitial = String.fromCharCode(65 + Math.floor(Math.random() * 26)) + '.';
-                    return `${firstName} ${middleInitial} ${lastName}`;
-                }
-                return `${firstName} ${lastName}`;
+            if (!isStrongPassword(pass)) {
+                // تم تعديل رسالة الخطأ: إزالة ذكر "رمز خاص"
+                showToast("❌ كلمة المرور يجب أن تكون 8 أحرف على الأقل وتحتوي على حرف كبير وصغير ورقم", "#ef4444");
+                return;
             }
-
-            function getRandomRecentTime() {
-                const now = new Date();
-                const minutesAgo = Math.floor(Math.random() * 60 * 24);
-                const past = new Date(now.getTime() - minutesAgo * 60000);
-                return past.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+            if (pass !== passConfirm) {
+                showToast("❌ كلمتا المرور غير متطابقتين", "#ef4444");
+                return;
             }
-
-            function renderInvestors() {
-                const container = document.getElementById('investor-list');
-                if (!container) return;
-                const count = Math.floor(Math.random() * 3) + 5;
-                let html = '';
-                for (let i = 0; i < count; i++) {
-                    const name = generateForeignName();
-                    const amount = (Math.random() * 4500 + 500).toFixed(2);
-                    const time = getRandomRecentTime();
-                    const avatarChar = name.charAt(0);
-                    html += `<div class="investor-item fade-in"><div class="investor-info"><div class="investor-avatar">${avatarChar}</div><div><div class="investor-name">${name}</div><div class="investor-time">🕒 ${time}</div></div></div><div class="investor-amount">+ $${amount}</div></div>`;
-                }
-                container.innerHTML = html;
+            if (findUserByEmail(email)) {
+                showToast("❌ هذا البريد الإلكتروني مسجل بالفعل", "#ef4444");
+                return;
             }
+            const joinDate = new Date().toLocaleDateString('ar-EG');
+            const newUser = { email, password: pass, joinDate, inviteCode: invite || "لا يوجد" };
+            saveUser(newUser);
+            showToast("✅ تم إنشاء الحساب بنجاح", "#10b981");
+            localStorage.setItem('logged', 'true');
+            localStorage.setItem('user_email', email);
+            setTimeout(() => {
+                showPage('app');
+                navTo('home');
+            }, 800);
+        }
 
-            function getPersistentUserID() {
-                let userID = localStorage.getItem('bontx_user_id');
-                if (!userID) {
-                    userID = "BNT" + Math.floor(100000 + Math.random() * 900000);
-                    localStorage.setItem('bontx_user_id', userID);
-                }
-                return userID;
+        // ========== أسماء أجنبية ==========
+        const foreignFirstNames = ["James","John","Robert","Michael","William","David","Richard","Joseph","Thomas","Charles","Christopher","Daniel","Matthew","Anthony","Mark","Donald","Steven","Paul","Andrew","Joshua","Kenneth","Kevin","Brian","George","Edward","Ronald","Timothy","Jason","Jeffrey","Ryan","Jacob","Gary","Nicholas","Eric","Jonathan","Stephen","Larry","Justin","Scott","Brandon","Benjamin","Samuel","Frank","Gregory","Raymond","Alexander","Patrick","Jack","Dennis","Jerry","Tyler","Aaron","Jose","Henry","Adam","Douglas","Nathan","Peter","Zachary","Kyle","Walter","Harold","Jeremy","Ethan","Carl","Keith","Roger","Gerald","Christian","Terry","Sean","Arthur","Austin","Noah","Jesse","Joe","Bryan","Billy","Jordan","Albert","Dylan","Bruce","Willie","Gabriel","Alan","Juan","Logan","Wayne","Ralph","Roy","Eugene","Vincent","Randy","Russell","Louis","Philip","Bobby","Johnny","Bradley","Cody","Emma","Olivia","Ava","Isabella","Sophia","Mia","Charlotte","Amelia","Harper","Evelyn","Abigail","Emily","Elizabeth","Sofia","Avery","Ella","Madison","Scarlett","Victoria","Aria","Grace","Chloe","Camila","Penelope","Riley","Layla","Lillian","Nora","Zoey","Mila","Aubrey","Hannah","Lily","Addison","Eleanor","Natalie","Luna","Savannah","Brooklyn","Leah","Zoe","Stella","Hazel","Ellie","Paisley","Audrey","Skylar","Violet","Claire"];
+        const foreignLastNames = ["Smith","Johnson","Williams","Brown","Jones","Garcia","Miller","Davis","Rodriguez","Martinez","Hernandez","Lopez","Gonzalez","Wilson","Anderson","Thomas","Taylor","Moore","Jackson","Martin","Lee","Perez","Thompson","White","Harris","Sanchez","Clark","Ramirez","Lewis","Robinson","Walker","Young","Allen","King","Wright","Scott","Torres","Nguyen","Hill","Flores","Green","Adams","Nelson","Baker","Hall","Rivera","Campbell","Mitchell","Carter","Roberts","Gomez","Phillips","Evans","Turner","Diaz","Parker","Cruz","Edwards","Collins","Reyes","Stewart","Morris","Morales","Murphy","Cook","Rogers","Gutierrez","Ortiz","Morgan","Cooper","Peterson","Bailey","Reed","Kelly","Howard","Ramos","Kim","Cox","Ward","Richardson","Watson","Brooks","Chavez","Wood","James","Bennett","Gray","Mendoza","Ruiz","Hughes","Price","Alvarez","Castillo","Sanders","Patel","Myers","Long","Ross","Foster","Jimenez"];
+
+        function generateForeignName() {
+            const firstName = foreignFirstNames[Math.floor(Math.random() * foreignFirstNames.length)];
+            const lastName = foreignLastNames[Math.floor(Math.random() * foreignLastNames.length)];
+            if (Math.random() > 0.5) {
+                const middleInitial = String.fromCharCode(65 + Math.floor(Math.random() * 26)) + '.';
+                return `${firstName} ${middleInitial} ${lastName}`;
             }
+            return `${firstName} ${lastName}`;
+        }
 
-            const vipsData = [
-                {l:1, p:55, d:65.0, icon:'fa-crown', color:'var(--success)', special: true},
-                {l:2, p:100, d:28.0, icon:'fa-gem', color:'var(--border)'},
-                {l:3, p:250, d:75.0, icon:'fa-gem', color:'var(--border)'},
-                {l:4, p:600, d:185.0, icon:'fa-gem', color:'var(--border)'},
-                {l:5, p:1200, d:380.0, icon:'fa-gem', color:'var(--border)'},
-                {l:6, p:2500, d:820.0, icon:'fa-gem', color:'var(--border)'},
-                {l:7, p:5000, d:1750.0, icon:'fa-gem', color:'var(--border)'},
-                {l:8, p:10000, d:3600.0, icon:'fa-gem', color:'var(--border)'},
-                {l:9, p:20000, d:7500.0, icon:'fa-gem', color:'var(--border)'},
-                {l:10, p:45000, d:16000.0, icon:'fa-gem', color:'var(--border)'}
-            ];
+        function getRandomRecentTime() {
+            const now = new Date();
+            const minutesAgo = Math.floor(Math.random() * 60 * 24);
+            const past = new Date(now.getTime() - minutesAgo * 60000);
+            return past.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+        }
 
-            window.showToast = function(msg, color = "#3b82f6") {
-                const t = document.getElementById('toast');
-                t.style.background = color; 
-                t.innerText = msg; 
-                t.style.display = 'block';
-                setTimeout(() => t.style.display = 'none', 3000);
-            };
+        function renderInvestors() {
+            const container = document.getElementById('investor-list');
+            if (!container) return;
+            const count = Math.floor(Math.random() * 3) + 5;
+            let html = '';
+            for (let i = 0; i < count; i++) {
+                const name = generateForeignName();
+                const amount = (Math.random() * 4500 + 500).toFixed(2);
+                const time = getRandomRecentTime();
+                const avatarChar = name.charAt(0);
+                html += `<div class="investor-item fade-in"><div class="investor-info"><div class="investor-avatar">${avatarChar}</div><div><div class="investor-name">${name}</div><div class="investor-time">🕒 ${time}</div></div></div><div class="investor-amount">+ $${amount}</div></div>`;
+            }
+            container.innerHTML = html;
+        }
 
-            window.copyOnly = function(txt) { 
-                navigator.clipboard.writeText(txt).then(() => showToast("تم النسخ ✅", "#10b981")).catch(() => showToast("تعذر النسخ", "#ef4444"));
-            };
+        function getPersistentUserID() {
+            let userID = localStorage.getItem('bontx_user_id');
+            if (!userID) {
+                userID = "BNT" + Math.floor(100000 + Math.random() * 900000);
+                localStorage.setItem('bontx_user_id', userID);
+            }
+            return userID;
+        }
+
+        const vipsData = [
+            {l:1, p:55, d:65.0, icon:'fa-crown', color:'var(--success)', special: true},
+            {l:2, p:100, d:28.0, icon:'fa-gem', color:'var(--border)'},
+            {l:3, p:250, d:75.0, icon:'fa-gem', color:'var(--border)'},
+            {l:4, p:600, d:185.0, icon:'fa-gem', color:'var(--border)'},
+            {l:5, p:1200, d:380.0, icon:'fa-gem', color:'var(--border)'},
+            {l:6, p:2500, d:820.0, icon:'fa-gem', color:'var(--border)'},
+            {l:7, p:5000, d:1750.0, icon:'fa-gem', color:'var(--border)'},
+            {l:8, p:10000, d:3600.0, icon:'fa-gem', color:'var(--border)'},
+            {l:9, p:20000, d:7500.0, icon:'fa-gem', color:'var(--border)'},
+            {l:10, p:45000, d:16000.0, icon:'fa-gem', color:'var(--border)'}
+        ];
+
+        function showToast(msg, color = "#3b82f6") {
+            const t = document.getElementById('toast');
+            t.style.background = color; 
+            t.innerText = msg; 
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 3000);
+        }
+        
+        function copyOnly(txt) { 
+            navigator.clipboard.writeText(txt).then(() => showToast("تم النسخ ✅", "#10b981")); 
+        }
+        function copyAddress() {
+            const addr = wallets[currentNetwork];
+            copyOnly(addr);
+        }
+        
+        function showPage(pageId) {
+            document.getElementById('login-page').classList.add('hidden');
+            document.getElementById('signup-page').classList.add('hidden');
+            document.getElementById('app').classList.add('hidden');
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        function updateWithdrawFeeDisplay() {
+            const feeAmount = networkFees[selectedWithdrawNet];
+            const netName = selectedWithdrawNet === 'TRC' ? 'TRC20' : 'BEP20';
+            document.getElementById('fee-network-name').innerText = netName;
+            document.getElementById('fee-amount-display').innerText = feeAmount.toFixed(2) + ' USDT';
             
-            window.copyAddress = function() {
-                const addr = wallets[currentNetwork];
-                copyOnly(addr);
-            };
-            
-            window.showPage = function(pageId) {
-                document.getElementById('login-page').classList.add('hidden');
-                document.getElementById('signup-page').classList.add('hidden');
-                document.getElementById('app').classList.add('hidden');
-                document.getElementById(pageId).classList.remove('hidden');
-            };
+            document.getElementById('with-trc').style.background = (selectedWithdrawNet === 'TRC') ? 'var(--accent)' : '#000';
+            document.getElementById('with-bnb').style.background = (selectedWithdrawNet === 'BNB') ? 'var(--accent)' : '#000';
+        }
 
-            function updateWithdrawFeeDisplay() {
-                const feeAmount = networkFees[selectedWithdrawNet];
-                const netName = selectedWithdrawNet === 'TRC' ? 'TRC20' : 'BEP20';
-                const feeNetEl = document.getElementById('fee-network-name');
-                const feeAmtEl = document.getElementById('fee-amount-display');
-                if (feeNetEl) feeNetEl.innerText = netName;
-                if (feeAmtEl) feeAmtEl.innerText = feeAmount.toFixed(2) + ' USDT';
-                
-                const withTrc = document.getElementById('with-trc');
-                const withBnb = document.getElementById('with-bnb');
-                if (withTrc) withTrc.style.background = (selectedWithdrawNet === 'TRC') ? 'var(--accent)' : '#000';
-                if (withBnb) withBnb.style.background = (selectedWithdrawNet === 'BNB') ? 'var(--accent)' : '#000';
-            }
+        function switchWithdrawNet(net) {
+            selectedWithdrawNet = net;
+            updateWithdrawFeeDisplay();
+        }
 
-            window.switchWithdrawNet = function(net) {
-                selectedWithdrawNet = net;
-                updateWithdrawFeeDisplay();
-            };
-
-            window.handleWithdraw = function() {
-                const amount = parseFloat(document.getElementById('withdraw-amount').value);
-                const addr = document.getElementById('withdraw-addr').value.trim();
-                const fee = networkFees[selectedWithdrawNet];
-                
-                if (isNaN(amount) || amount < 2) { showToast("❌ الحد الأدنى 2 USDT", "#ef4444"); return; }
-                if (!addr) { showToast("❌ أدخل عنوان المحفظة", "#ef4444"); return; }
-                
-                const totalNeeded = amount + fee;
-                if (totalNeeded > currentBalance) { 
-                    showToast(`❌ رصيد غير كاف (المطلوب ${totalNeeded.toFixed(2)} USDT شامل الرسوم)`, "#ef4444"); 
-                    return; 
-                }
-                
-                currentBalance -= totalNeeded; 
-                totalWithdrawn += amount;
-                transactions.unshift({ 
-                    type: `سحب (${selectedWithdrawNet})`, 
-                    date: new Date().toLocaleString('ar-EG'), 
-                    status: 'قيد المراجعة', 
-                    color: '#f59e0b', 
-                    amount: `-${amount.toFixed(2)}` 
-                });
-                
-                showToast(`✅ تم تقديم طلب سحب ${amount.toFixed(2)} USDT (رسوم ${fee.toFixed(2)} USDT)`, "#10b981");
-                document.getElementById('withdraw-amount').value = '';
-                document.getElementById('withdraw-addr').value = '';
-                openWithdraw();
-                if(document.getElementById('nav-account') && document.getElementById('nav-account').classList.contains('active')) navTo('me');
-            };
-
-            window.openNotifications = function() { document.getElementById('notif-modal').classList.remove('hidden'); };
-            window.confirmDepositAction = function() { 
-                showToast("⏳ جاري التحقق...", "#f59e0b"); 
-                setTimeout(() => { closeModals(); showToast("سيتم تحديث الرصيد قريباً", "#10b981"); }, 1200); 
-            };
-            window.openSyncModal = function() { document.getElementById('sync-modal').classList.remove('hidden'); };
-            window.executeSyncAction = function() { closeModals(); showToast("❌ الصفقة غير موجودة", "#ef4444"); };
-            window.closeModals = function() { 
-                document.querySelectorAll('.overlay').forEach(m => m.classList.add('hidden')); 
-                if (depTimerInterval) { clearInterval(depTimerInterval); depTimerInterval = null; }
-            };
+        function handleWithdraw() {
+            const amount = parseFloat(document.getElementById('withdraw-amount').value);
+            const addr = document.getElementById('withdraw-addr').value.trim();
+            const fee = networkFees[selectedWithdrawNet];
             
-            window.switchWallet = function(type) {
-                currentNetwork = type;
-                document.getElementById('btn-trc').style.background = (type === 'TRC') ? 'var(--accent)' : '#222';
-                document.getElementById('btn-bnb').style.background = (type === 'BNB') ? 'var(--accent)' : '#222';
-                const addr = wallets[type];
-                document.getElementById('addr-text-display').innerText = addr;
-                const qrImg = document.getElementById('qr-code-img');
-                qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(addr)}`;
-                document.getElementById('network-label').innerHTML = (type === 'TRC') ? '🌐 شبكة TRC20' : '🌐 شبكة BEP20';
-            };
+            if (isNaN(amount) || amount < 2) { showToast("❌ الحد الأدنى 2 USDT", "#ef4444"); return; }
+            if (!addr) { showToast("❌ أدخل عنوان المحفظة", "#ef4444"); return; }
             
-            window.openDeposit = function() { 
-                document.getElementById('deposit-modal').classList.remove('hidden'); 
-                switchWallet('TRC');
-                startDepTimer(); 
-            };
-            
-            window.openWithdraw = function() { 
-                document.getElementById('with-bal').innerText = currentBalance.toFixed(2);
-                selectedWithdrawNet = 'TRC';
-                updateWithdrawFeeDisplay();
-                
-                const histDiv = document.getElementById('quick-withdraw-history');
-                const withdrawTxs = transactions.filter(t=>t.type.includes('سحب'));
-                histDiv.innerHTML = withdrawTxs.length ? withdrawTxs.map(t=>`<div style="padding:8px; background:#0a0a0a; border-radius:10px; margin-bottom:6px;">${t.amount} USDT - ${t.status}</div>`).join('') : '<div>لا يوجد سحوبات</div>';
-                document.getElementById('withdraw-modal').classList.remove('hidden'); 
-            };
-            
-            window.openHistory = function() {
-                const list = document.getElementById('history-list');
-                if (transactions.length === 0) {
-                    list.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-dim);">لا توجد معاملات حتى الآن</div>';
-                    document.getElementById('history-modal').classList.remove('hidden');
-                    return;
-                }
-                list.innerHTML = '';
-                transactions.forEach(t => { 
-                    list.innerHTML += `<div class="history-card"><div><div>${t.type}</div><div style="font-size:10px;">${t.date}</div></div><div style="color:${t.amount.includes('+')?'var(--success)':'var(--danger)'}">${t.amount}</div></div>`; 
-                });
-                document.getElementById('history-modal').classList.remove('hidden');
-            };
-            
-            function startDepTimer() { 
-                if (depTimerInterval) clearInterval(depTimerInterval);
-                let sec = 1799; 
-                const el = document.getElementById('dep-countdown');
-                depTimerInterval = setInterval(() => { 
-                    let m = Math.floor(sec/60), s = sec%60; 
-                    if(el) el.innerText = `صلاحية العنوان: ${m}:${s<10?'0'+s:s}`; 
-                    sec--; 
-                    if (sec < 0) clearInterval(depTimerInterval);
-                }, 1000); 
+            const totalNeeded = amount + fee;
+            if (totalNeeded > currentBalance) { 
+                showToast(`❌ رصيد غير كاف (المطلوب ${totalNeeded.toFixed(2)} USDT شامل الرسوم)`, "#ef4444"); 
+                return; 
             }
             
-            window.handleVIPTask = function(price) {
-                if (currentBalance < price) {
-                    showToast("⚠️ الرصيد غير كافي", "#ef4444");
-                    setTimeout(() => { openDeposit(); }, 800);
-                } else {
-                    showToast("✅ تم تفعيل المهمة بنجاح", "#10b981");
-                }
-            };
-            
-            window.openTelegram = function() { window.open('https://t.me/BontX_bot', '_blank'); };
-            window.logout = function() { 
-                localStorage.removeItem('logged');
-                localStorage.removeItem('user_email');
-                location.reload(); 
-            };
-
-            function initTicker() {
-                const ticker = document.getElementById('live-ticker');
-                if (!ticker) return;
-                const items = [
-                    '<span class="ticker-item"><span class="t-dep">+5,240 USDT</span> سحب • James W.</span>',
-                    '<span class="ticker-item"><span class="t-dep">+12,800 USDT</span> إيداع • Sophia M.</span>',
-                    '<span class="ticker-item"><span class="t-wit">+2,150 USDT</span> سحب • Oliver B.</span>',
-                    '<span class="ticker-item"><span class="t-dep">+34,500 USDT</span> إيداع • Emma D.</span>',
-                    '<span class="ticker-item"><span class="t-wit">+8,720 USDT</span> سحب • Liam S.</span>',
-                    '<span class="ticker-item"><span class="t-dep">+19,300 USDT</span> إيداع • Charlotte K.</span>'
-                ];
-                ticker.innerHTML = items.join('') + items.join('');
-            }
-
-            // ========== إشعارات السوق الحقيقية (API مباشر) ==========
-            async function fetchMarketPrices() {
-                try {
-                    const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
-                    const responses = await Promise.all(
-                        symbols.map(sym => fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${sym}`).then(r => r.json()))
-                    );
-                    
-                    const prices = {};
-                    responses.forEach(data => {
-                        const base = data.symbol.replace('USDT', '');
-                        prices[base] = {
-                            price: parseFloat(data.lastPrice).toFixed(2),
-                            change: parseFloat(data.priceChangePercent).toFixed(2)
-                        };
-                    });
-                    return prices;
-                } catch (error) {
-                    console.warn('تعذر جلب الأسعار من Binance, استخدام قيم احتياطية', error);
-                    return {
-                        BTC: { price: '68421.50', change: '2.34' },
-                        ETH: { price: '3512.80', change: '-0.87' },
-                        SOL: { price: '142.15', change: '5.21' }
-                    };
-                }
-            }
-
-            function formatMarketMessage(prices) {
-                const btc = prices.BTC;
-                const eth = prices.ETH;
-                const sol = prices.SOL;
-                
-                const btcChangeClass = parseFloat(btc.change) >= 0 ? 'price-up' : 'price-down';
-                const ethChangeClass = parseFloat(eth.change) >= 0 ? 'price-up' : 'price-down';
-                const solChangeClass = parseFloat(sol.change) >= 0 ? 'price-up' : 'price-down';
-                
-                return `
-                    <span>🔥 BTC: $${btc.price} <span class="${btcChangeClass}">(${btc.change}%)</span></span>
-                    <span style="margin:0 20px;">♦️ ETH: $${eth.price} <span class="${ethChangeClass}">(${eth.change}%)</span></span>
-                    <span>💧 SOL: $${sol.price} <span class="${solChangeClass}">(${sol.change}%)</span></span>
-                    <span style="margin-right:20px;">📊 تحديث مباشر</span>
-                `;
-            }
-
-            async function updateMarketTicker() {
-                const container = document.getElementById('market-ticker-scroll');
-                if (!container) return;
-                
-                try {
-                    const prices = await fetchMarketPrices();
-                    container.innerHTML = formatMarketMessage(prices);
-                } catch (e) {
-                    container.innerHTML = '⚡ جاري تحميل بيانات السوق...';
-                }
-            }
-
-            function startMarketUpdates() {
-                if (marketUpdateInterval) clearInterval(marketUpdateInterval);
-                updateMarketTicker();
-                marketUpdateInterval = setInterval(updateMarketTicker, 30000);
-            }
-
-            window.handleNavAction = function(action) {
-                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-                switch(action) {
-                    case 'home': document.getElementById('nav-home').classList.add('active'); navTo('home'); break;
-                    case 'vip': document.getElementById('nav-vip').classList.add('active'); navTo('vip'); break;
-                    case 'wallet': document.getElementById('nav-wallet').classList.add('active'); openWithdraw(); break;
-                    case 'trade': document.getElementById('nav-trade').classList.add('active'); openSyncModal(); break;
-                    case 'chart': document.getElementById('nav-chart').classList.add('active'); document.getElementById('chart-modal').classList.remove('hidden'); break;
-                    case 'account': document.getElementById('nav-account').classList.add('active'); navTo('me'); break;
-                    default: break;
-                }
-            };
-
-            window.navTo = function(page) {
-                const cont = document.getElementById('main-content');
-                window.scrollTo(0,0);
-                clearInterval(investorInterval);
-                if (marketUpdateInterval) clearInterval(marketUpdateInterval);
-                
-                if(page === 'home') {
-                    cont.innerHTML = `
-                        <div class="ticker-wrap"><div class="ticker" id="live-ticker"></div></div>
-                        <div style="padding: 15px;">
-                            <!-- بطاقة الصورة المرفقة (VIP Promo) -->
-                            <div class="vip-promo-card fade-in">
-                                <div class="promo-header">
-                                    <span class="promo-logo">BitX</span>
-                                    <span class="promo-followers"><i class="fa-regular fa-user"></i> 1 ألف متابع</span>
-                                </div>
-                                <div class="promo-quote"
-                                </div>
-                                <div class="promo-emoji">😍😍😍</div>
-                                <div style="text-align:center; margin:5px 0;">لمتحنك تجربة مميزة ومزايا حصرية تستحقها</div>
-                                <div class="promo-code-section">
-                                    <div class="promo-code-label">
-                                        <i class="fa-solid fa-ticketالاكود (انسخه كما هو): 💡
-                                    </div>
-                                    <div class="promo-code-value" onclick="copyOnly('VIP')">VIP</div>
-                                    <div class="promo-details">
-                                        <span><i class="fa-regular fa-clock"></i> مدة الصفقة: 10 دقيقة</span>
-                                        <span><i class="fa-solid fa-tag"></i> نوع الصفقة: بيج</span>
-                                    </div>
-                                </div>
-                                <div class="promo-footer">
-                                    <span><i class="fa-brands fa-bitcoin"></i> BitX</span>
-                                    <span><i class="fa-solid fa-mobile-screen"></i> app.bit-xt.com</span>
-                                </div>
-                                <div style="margin-top:8px; background:rgba(255,215,0,0.1); border-radius:30px; padding:6px 12px; text-align:center; font-size:12px;">
-                                    🎉 تذكير بموعد فتح التداول المباشر
-                                </div>
-                            </div>
-                            
-                            <div class="wallet-total-card fade-in">
-                                <div class="bontx-header"><i class="fa-solid fa-cube" style="color: var(--accent); font-size: 24px;"></i><span class="bontx-logo">BontX</span><span style="margin-right: auto; font-size: 12px; background: #1e293b; padding: 4px 12px; border-radius: 30px;">إصدار 2.0</span></div>
-                                <div style="display: flex; justify-content: space-between; align-items: baseline;"><div><div style="font-size: 13px; color: var(--text-dim);">إجمالي المحفظة</div><div style="font-size: 34px; font-weight: 900;">$${currentBalance.toFixed(2)}</div></div><div style="text-align: left;"><div style="font-size: 12px; color: var(--text-dim);">متابعة</div><div style="font-size: 20px; font-weight: bold; color: #ccc;">$${(todayEarned * 0.3).toFixed(2)}</div></div></div>
-                                <div class="badge-triple"><span class="badge-item"><i class="fa-regular fa-circle-check" style="color:var(--success); margin-left:5px;"></i>مدعي</span><span class="badge-item"><i class="fa-regular fa-pen-to-square" style="color:var(--gold); margin-left:5px;"></i>ممضي</span><span class="badge-item"><i class="fa-solid fa-lock" style="color:var(--accent); margin-left:5px;"></i>مشفر</span></div>
-                                <div class="action-row"><div class="action-btn" onclick="openDeposit()"><i class="fa-solid fa-circle-plus"></i> إضافة أموال</div><div class="action-btn" onclick="openWithdraw()"><i class="fa-solid fa-eye"></i> عرض المحفظة</div></div>
-                                <div style="background: rgba(59, 130, 246, 0.1); border-radius: 16px; padding: 14px; margin: 10px 0; border-right: 4px solid var(--accent);"><div style="font-weight: bold; margin-bottom: 5px;">ابدأ التداول</div><div style="font-size: 12px; color: #bbb;">افتح أول صفقة عقود أدلة الأمن</div></div>
-                                <div class="action-row" style="margin-top: 5px;"><div class="action-btn" onclick="navTo('team')"><i class="fa-solid fa-user-plus"></i> دعوة</div><div class="action-btn" onclick="openWithdraw()"><i class="fa-solid fa-arrow-down"></i> سحب</div><div class="action-btn" onclick="openSyncModal()"><i class="fa-solid fa-chart-line"></i> تداول</div><div class="action-btn" onclick="openDeposit()"><i class="fa-solid fa-arrow-up"></i> إيداع</div></div>
-                                <div class="crypto-ticker"><div class="crypto-item"><span class="crypto-name">SOL</span><div class="crypto-price" id="disp-sol">$142.15</div></div><div class="crypto-item"><span class="crypto-name">ETH</span><div class="crypto-price" id="disp-eth">$3,512</div></div><div class="crypto-item"><span class="crypto-name">BTC</span><div class="crypto-price" id="disp-btc">$68,421</div></div></div>
-                                
-                                <div class="market-notice">
-                                    <span style="display:flex; align-items:center;"><i class="fa-solid fa-newspaper" style="margin-left: 8px; color: var(--gold);"></i>أشعار السوق</span>
-                                    <div class="market-ticker-content">
-                                        <div class="market-scroll" id="market-ticker-scroll">⏳ جاري تحميل بيانات السوق...</div>
-                                    </div>
-                                    <span class="live-badge"><i class="fa-solid fa-circle" style="font-size: 6px; margin-left: 5px;"></i>مباشر</span>
-                                </div>
-                            </div>
-                            <div style="margin: 24px 0 8px;"><div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;"><i class="fa-solid fa-chart-pie" style="color: var(--accent);"></i><h3 style="margin:0; font-size: 18px;">تحليلات السوق</h3><span style="margin-right: auto; font-size: 12px; background: #1e293b; padding: 4px 10px; border-radius: 30px;">📊 5.0 ★</span></div>
-                            <div class="analysis-grid"><div class="analysis-item"><i class="fa-solid fa-chart-line"></i><div class="analysis-label">تحليل فني</div><div class="analysis-value">5.0</div><span class="analysis-badge">شراء قوي</span></div><div class="analysis-item"><i class="fa-solid fa-scale-balanced"></i><div class="analysis-label">تحليل أساسي</div><div class="analysis-value">4.9</div><span class="analysis-badge">إيجابي</span></div><div class="analysis-item"><i class="fa-solid fa-coins"></i><div class="analysis-label">قيمة سوقية</div><div class="analysis-value">5.0</div><span class="analysis-badge">مستقر</span></div><div class="analysis-item"><i class="fa-solid fa-gauge-high"></i><div class="analysis-label">مؤشر القوة</div><div class="analysis-value">4.8</div><span class="analysis-badge">صاعد</span></div></div></div>
-                            <h3 style="margin: 20px 0 10px;"><i class="fa-solid fa-arrow-trend-up" style="color: var(--success); margin-left: 8px;"></i>آخر السحوبات</h3>
-                            <div id="investor-list"></div>
-                        </div>`;
-                    initTicker(); 
-                    renderInvestors(); 
-                    investorInterval = setInterval(renderInvestors, 3500);
-                    startMarketUpdates();
-                    setTimeout(async () => {
-                        const prices = await fetchMarketPrices();
-                        const btcEl = document.getElementById('disp-btc');
-                        const ethEl = document.getElementById('disp-eth');
-                        const solEl = document.getElementById('disp-sol');
-                        if(btcEl) btcEl.innerText = '$' + prices.BTC.price;
-                        if(ethEl) ethEl.innerText = '$' + prices.ETH.price;
-                        if(solEl) solEl.innerText = '$' + prices.SOL.price;
-                    }, 500);
-                } else if(page === 'vip') {
-                    let html = `<div style="padding:20px;"><h3>باقات VIP</h3>`;
-                    vipsData.forEach(v => html += `
-                        <div class="card">
-                            <div style="display:flex; justify-content:space-between;">
-                                <span>VIP ${v.l} - ${v.p}$</span>
-                                <span style="color:var(--success);">+${v.d}$ يومياً</span>
-                            </div>
-                            <button class="btn-main" onclick="handleVIPTask(${v.p})">
-                                ${currentVIPLevel===v.l ? 'مفعل' : 'تفعيل'}
-                            </button>
-                        </div>
-                    `);
-                    cont.innerHTML = html + `</div>`;
-                } else if(page === 'me') {
-                    const currentUser = getCurrentUser();
-                    const userEmail = currentUser ? currentUser.email : (localStorage.getItem('user_email') || 'مستخدم');
-                    const userID = getPersistentUserID();
-                    let joinDate = currentUser ? currentUser.joinDate : new Date().toLocaleDateString('ar-EG');
-                    cont.innerHTML = `
-                    <div style="padding:15px;">
-                        <div class="me-header-card"><div style="display:flex; gap:15px; align-items:center;"><i class="fa-solid fa-user-astronaut" style="font-size:40px;"></i><div><b style="font-size:18px;">${userEmail}</b><div class="vip-badge" style="margin-top:5px;">VIP ${currentVIPLevel}</div></div></div><div class="progress-bar-wrap" style="margin:16px 0 8px;"><div class="progress-bar-fill" style="width:${Math.min(currentVIPLevel*8, 80)}%;"></div></div><div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-dim);"><span>المستوى الحالي</span><span>المستوى التالي: VIP ${currentVIPLevel+1}</span></div></div>
-                        <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:8px; margin:15px 0;"><div class="d-stat-item"><span class="d-stat-val">$${currentBalance.toFixed(2)}</span><span class="d-stat-lbl">الرصيد</span></div><div class="d-stat-item"><span class="d-stat-val">$${totalDeposited.toFixed(2)}</span><span class="d-stat-lbl">إيداع</span></div><div class="d-stat-item"><span class="d-stat-val">$${totalWithdrawn.toFixed(2)}</span><span class="d-stat-lbl">مسحوب</span></div><div class="d-stat-item"><span class="d-stat-val">$${totalProfit.toFixed(2)}</span><span class="d-stat-lbl">الأرباح</span></div></div>
-                        <div class="account-section-title"><i class="fa-solid fa-id-card" style="color:var(--accent);"></i><span>معلومات الحساب</span></div>
-                        <div class="card" style="padding:5px 15px;"><div class="info-row"><span class="info-label"><i class="fa-regular fa-user"></i> معرف المستخدم</span><span class="info-value" onclick="copyOnly('${userID}')" style="cursor:pointer;">${userID} <i class="fa-regular fa-copy" style="font-size:10px;"></i></span></div><div class="info-row"><span class="info-label"><i class="fa-regular fa-calendar"></i> تاريخ الانضمام</span><span class="info-value">${joinDate}</span></div><div class="info-row"><span class="info-label"><i class="fa-regular fa-circle-check"></i> حالة الحساب</span><span class="info-value" style="color:var(--success);">نشط ✅</span></div><div class="info-row" style="border-bottom:none;"><span class="info-label"><i class="fa-solid fa-link"></i> رمز الإحالة</span><span class="info-value" onclick="copyOnly('${sessionInviteCode}')" style="cursor:pointer;">${sessionInviteCode} <i class="fa-regular fa-copy"></i></span></div></div>
-                        <div class="account-section-title"><i class="fa-solid fa-shield-halved" style="color:var(--gold);"></i><span>الأمان والخصوصية</span></div>
-                        <div class="card" style="padding:5px 15px;"><div class="info-row"><span class="info-label"><i class="fa-solid fa-lock"></i> كلمة المرور</span><span class="security-badge" onclick="showToast('يمكنك تغيير كلمة المرور من الإعدادات')" style="cursor:pointer;">●●●●●●●● <i class="fa-regular fa-pen-to-square"></i></span></div><div class="info-row"><span class="info-label"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</span><span class="info-value">${userEmail} <i class="fa-regular fa-circle-check" style="color:var(--success);"></i></span></div><div class="info-row" style="border-bottom:none;"><span class="info-label"><i class="fa-solid fa-qrcode"></i> التحقق بخطوتين</span><span class="info-value" style="color:var(--danger);" onclick="showToast('قم بتفعيل 2FA لتعزيز الأمان')">غير مفعل <i class="fa-regular fa-bell"></i></span></div></div>
-                        <button class="btn-main install-btn" onclick="triggerInstallOrInstructions()"><i class="fa-solid fa-download"></i> تثبيت التطبيق على الجهاز</button>
-                        <button class="btn-main" onclick="openHistory()" style="margin-top:12px;"><i class="fa-solid fa-clock-rotate-left"></i> سجل المعاملات الكامل</button>
-                        <button class="btn-outline" onclick="showToast('سيتم فتح إعدادات الحساب قريباً')"><i class="fa-regular fa-gear"></i> إعدادات متقدمة</button>
-                        <button class="btn-outline" style="border-color:var(--danger); color:var(--danger);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج</button>
-                    </div>`;
-                } else if(page === 'team') {
-                    cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('https://exurs7app.github.io/finance-app/')">https://exurs7app.github.io/finance-app/</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
-                }
-            };
-
-            // ---------- PWA & تثبيت التطبيق ----------
-            function registerServiceWorker() {
-                if ('serviceWorker' in navigator) {
-                    const swCode = `
-                        const CACHE_NAME = 'bontx-v1';
-                        const urlsToCache = [
-                            '.',
-                            'index.html',
-                            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-                            'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
-                        ];
-                        self.addEventListener('install', event => {
-                            event.waitUntil(
-                                caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-                            );
-                        });
-                        self.addEventListener('fetch', event => {
-                            event.respondWith(
-                                caches.match(event.request).then(response => response || fetch(event.request))
-                            );
-                        });
-                    `;
-                    const blob = new Blob([swCode], { type: 'application/javascript' });
-                    const swUrl = URL.createObjectURL(blob);
-                    navigator.serviceWorker.register(swUrl).then(reg => {
-                        console.log('Service Worker registered');
-                    }).catch(err => console.log('SW registration failed', err));
-                }
-            }
-
-            window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
+            currentBalance -= totalNeeded; 
+            totalWithdrawn += amount;
+            transactions.unshift({ 
+                type: `سحب (${selectedWithdrawNet})`, 
+                date: new Date().toLocaleString('ar-EG'), 
+                status: 'قيد المراجعة', 
+                color: '#f59e0b', 
+                amount: `-${amount.toFixed(2)}` 
             });
+            
+            showToast(`✅ تم تقديم طلب سحب ${amount.toFixed(2)} USDT (رسوم ${fee.toFixed(2)} USDT)`, "#10b981");
+            document.getElementById('withdraw-amount').value = '';
+            document.getElementById('withdraw-addr').value = '';
+            openWithdraw();
+            if(document.getElementById('nav-account') && document.getElementById('nav-account').classList.contains('active')) navTo('me');
+        }
 
-            window.triggerInstallOrInstructions = function() {
-                // التحقق مما إذا كان التطبيق يعمل في وضع standalone (مثبت بالفعل)
-                if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-                    showToast('✅ التطبيق مثبت بالفعل على جهازك', '#10b981');
-                    return;
-                }
+        function openNotifications() { document.getElementById('notif-modal').classList.remove('hidden'); }
+        function confirmDepositAction() { 
+            showToast("⏳ جاري التحقق...", "#f59e0b"); 
+            setTimeout(() => { closeModals(); showToast("سيتم تحديث الرصيد قريباً", "#10b981"); }, 1200); 
+        }
+        function openSyncModal() { document.getElementById('sync-modal').classList.remove('hidden'); }
+        function executeSyncAction() { closeModals(); showToast("❌ الصفقة غير موجودة", "#ef4444"); }
+        function closeModals() { 
+            document.querySelectorAll('.overlay').forEach(m => m.classList.add('hidden')); 
+            if (depTimerInterval) { clearInterval(depTimerInterval); depTimerInterval = null; }
+        }
+        
+        function switchWallet(type) {
+            currentNetwork = type;
+            document.getElementById('btn-trc').style.background = (type === 'TRC') ? 'var(--accent)' : '#222';
+            document.getElementById('btn-bnb').style.background = (type === 'BNB') ? 'var(--accent)' : '#222';
+            const addr = wallets[type];
+            document.getElementById('addr-text-display').innerText = addr;
+            const qrImg = document.getElementById('qr-code-img');
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(addr)}`;
+            document.getElementById('network-label').innerHTML = (type === 'TRC') ? '🌐 شبكة TRC20' : '🌐 شبكة BEP20';
+        }
+        
+        function openDeposit() { 
+            document.getElementById('deposit-modal').classList.remove('hidden'); 
+            switchWallet('TRC');
+            startDepTimer(); 
+        }
+        
+        function openWithdraw() { 
+            document.getElementById('with-bal').innerText = currentBalance.toFixed(2);
+            selectedWithdrawNet = 'TRC';
+            updateWithdrawFeeDisplay();
+            
+            const histDiv = document.getElementById('quick-withdraw-history');
+            histDiv.innerHTML = transactions.filter(t=>t.type.includes('سحب')).map(t=>`<div style="padding:8px; background:#0a0a0a; border-radius:10px; margin-bottom:6px;">${t.amount} USDT - ${t.status}</div>`).join('') || '<div>لا يوجد سحوبات</div>';
+            document.getElementById('withdraw-modal').classList.remove('hidden'); 
+        }
+        
+        function openHistory() {
+            const list = document.getElementById('history-list');
+            list.innerHTML = transactions.length ? '' : '<div>لا توجد معاملات</div>';
+            transactions.forEach(t => { 
+                list.innerHTML += `<div class="history-card"><div><div>${t.type}</div><div style="font-size:10px;">${t.date}</div></div><div style="color:${t.amount.includes('+')?'var(--success)':'var(--danger)'}">${t.amount}</div></div>`; 
+            });
+            document.getElementById('history-modal').classList.remove('hidden');
+        }
+        
+        function startDepTimer() { 
+            if (depTimerInterval) clearInterval(depTimerInterval);
+            let sec = 1799; 
+            const el = document.getElementById('dep-countdown');
+            depTimerInterval = setInterval(() => { 
+                let m = Math.floor(sec/60), s = sec%60; 
+                if(el) el.innerText = `صلاحية العنوان: ${m}:${s<10?'0'+s:s}`; 
+                sec--; 
+                if (sec < 0) clearInterval(depTimerInterval);
+            }, 1000); 
+        }
+        
+        function handleVIPTask(price) {
+            if (currentBalance < price) {
+                showToast("⚠️ الرصيد غير كافي", "#ef4444");
+                setTimeout(() => { openDeposit(); }, 800);
+            } else {
+                showToast("✅ تم تفعيل المهمة بنجاح", "#10b981");
+            }
+        }
+        
+        function openTelegram() { window.open('https://t.me/BontX_bot', '_blank'); }
+        function logout() { 
+            localStorage.removeItem('logged');
+            localStorage.removeItem('user_email');
+            location.reload(); 
+        }
+
+        function initTicker() {
+            const ticker = document.getElementById('live-ticker');
+            if (!ticker) return;
+            const items = [
+                '<span class="ticker-item"><span class="t-dep">+5,240 USDT</span> سحب • James W.</span>',
+                '<span class="ticker-item"><span class="t-dep">+12,800 USDT</span> إيداع • Sophia M.</span>',
+                '<span class="ticker-item"><span class="t-wit">+2,150 USDT</span> سحب • Oliver B.</span>',
+                '<span class="ticker-item"><span class="t-dep">+34,500 USDT</span> إيداع • Emma D.</span>',
+                '<span class="ticker-item"><span class="t-wit">+8,720 USDT</span> سحب • Liam S.</span>',
+                '<span class="ticker-item"><span class="t-dep">+19,300 USDT</span> إيداع • Charlotte K.</span>'
+            ];
+            ticker.innerHTML = items.join('') + items.join('');
+        }
+
+        // ========== إشعارات السوق الحقيقية (API مباشر) ==========
+        async function fetchMarketPrices() {
+            try {
+                // استخدام Binance public API (بدون مفتاح) لجلب أسعار BTC, ETH, SOL مقابل USDT
+                const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+                const responses = await Promise.all(
+                    symbols.map(sym => fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${sym}`).then(r => r.json()))
+                );
                 
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === 'accepted') {
-                            showToast('🎉 جاري تثبيت التطبيق...', '#10b981');
-                        }
-                        deferredPrompt = null;
-                    });
-                } else {
-                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-                    if (isIOS) {
-                        document.getElementById('install-instructions-modal').classList.remove('hidden');
-                    } else {
-                        // لمستخدمي أندرويد/كروم الذين لم يظهر لهم الحدث، نوجههم لاستخدام القائمة
-                        showToast('ℹ️ اضغط على ⋮ (القائمة) ثم "تثبيت التطبيق" أو "إضافة إلى الشاشة الرئيسية"', '#f59e0b');
-                    }
-                }
-            };
+                const prices = {};
+                responses.forEach(data => {
+                    const base = data.symbol.replace('USDT', '');
+                    prices[base] = {
+                        price: parseFloat(data.lastPrice).toFixed(2),
+                        change: parseFloat(data.priceChangePercent).toFixed(2)
+                    };
+                });
+                return prices;
+            } catch (error) {
+                console.warn('تعذر جلب الأسعار من Binance, استخدام قيم احتياطية', error);
+                // قيم احتياطية في حال فشل الاتصال
+                return {
+                    BTC: { price: '68421.50', change: '2.34' },
+                    ETH: { price: '3512.80', change: '-0.87' },
+                    SOL: { price: '142.15', change: '5.21' }
+                };
+            }
+        }
 
-            window.onload = function() {
-                registerServiceWorker();
-                if (localStorage.getItem('logged') === 'true') {
-                    showPage('app');
-                    navTo('home');
+        function formatMarketMessage(prices) {
+            const btc = prices.BTC;
+            const eth = prices.ETH;
+            const sol = prices.SOL;
+            
+            const btcChangeClass = parseFloat(btc.change) >= 0 ? 'price-up' : 'price-down';
+            const ethChangeClass = parseFloat(eth.change) >= 0 ? 'price-up' : 'price-down';
+            const solChangeClass = parseFloat(sol.change) >= 0 ? 'price-up' : 'price-down';
+            
+            return `
+                <span>🔥 BTC: $${btc.price} <span class="${btcChangeClass}">(${btc.change}%)</span></span>
+                <span style="margin:0 20px;">♦️ ETH: $${eth.price} <span class="${ethChangeClass}">(${eth.change}%)</span></span>
+                <span>💧 SOL: $${sol.price} <span class="${solChangeClass}">(${sol.change}%)</span></span>
+                <span style="margin-right:20px;">📊 تحديث مباشر</span>
+            `;
+        }
+
+        async function updateMarketTicker() {
+            const container = document.getElementById('market-ticker-scroll');
+            if (!container) return;
+            
+            try {
+                const prices = await fetchMarketPrices();
+                container.innerHTML = formatMarketMessage(prices);
+            } catch (e) {
+                container.innerHTML = '⚡ جاري تحميل بيانات السوق...';
+            }
+        }
+
+        function startMarketUpdates() {
+            if (marketUpdateInterval) clearInterval(marketUpdateInterval);
+            updateMarketTicker(); // أول مرة فورية
+            marketUpdateInterval = setInterval(updateMarketTicker, 30000); // كل 30 ثانية
+        }
+
+        function handleNavAction(action) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            switch(action) {
+                case 'home': document.getElementById('nav-home').classList.add('active'); navTo('home'); break;
+                case 'vip': document.getElementById('nav-vip').classList.add('active'); navTo('vip'); break;
+                case 'wallet': document.getElementById('nav-wallet').classList.add('active'); openWithdraw(); break;
+                case 'trade': document.getElementById('nav-trade').classList.add('active'); openSyncModal(); break;
+                case 'chart': document.getElementById('nav-chart').classList.add('active'); document.getElementById('chart-modal').classList.remove('hidden'); break;
+                case 'account': document.getElementById('nav-account').classList.add('active'); navTo('me'); break;
+                default: break;
+            }
+        }
+
+        function navTo(page) {
+            const cont = document.getElementById('main-content');
+            window.scrollTo(0,0);
+            clearInterval(investorInterval);
+            if (marketUpdateInterval) clearInterval(marketUpdateInterval);
+            
+            if(page === 'home') {
+                cont.innerHTML = `
+                    <div class="ticker-wrap"><div class="ticker" id="live-ticker"></div></div>
+                    <div style="padding: 15px;">
+                        <div class="wallet-total-card fade-in">
+                            <div class="bontx-header"><i class="fa-solid fa-cube" style="color: var(--accent); font-size: 24px;"></i><span class="bontx-logo">BontX</span><span style="margin-right: auto; font-size: 12px; background: #1e293b; padding: 4px 12px; border-radius: 30px;">إصدار 2.0</span></div>
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;"><div><div style="font-size: 13px; color: var(--text-dim);">إجمالي المحفظة</div><div style="font-size: 34px; font-weight: 900;">$${currentBalance.toFixed(2)}</div></div><div style="text-align: left;"><div style="font-size: 12px; color: var(--text-dim);">متابعة</div><div style="font-size: 20px; font-weight: bold; color: #ccc;">$${(todayEarned * 0.3).toFixed(2)}</div></div></div>
+                            <div class="badge-triple"><span class="badge-item"><i class="fa-regular fa-circle-check" style="color:var(--success); margin-left:5px;"></i>مدعي</span><span class="badge-item"><i class="fa-regular fa-pen-to-square" style="color:var(--gold); margin-left:5px;"></i>ممضي</span><span class="badge-item"><i class="fa-solid fa-lock" style="color:var(--accent); margin-left:5px;"></i>مشفر</span></div>
+                            <div class="action-row"><div class="action-btn" onclick="openDeposit()"><i class="fa-solid fa-circle-plus"></i> إضافة أموال</div><div class="action-btn" onclick="openWithdraw()"><i class="fa-solid fa-eye"></i> عرض المحفظة</div></div>
+                            <div style="background: rgba(59, 130, 246, 0.1); border-radius: 16px; padding: 14px; margin: 10px 0; border-right: 4px solid var(--accent);"><div style="font-weight: bold; margin-bottom: 5px;">ابدأ التداول</div><div style="font-size: 12px; color: #bbb;">افتح أول صفقة عقود أدلة الأمن</div></div>
+                            <div class="action-row" style="margin-top: 5px;"><div class="action-btn" onclick="navTo('team')"><i class="fa-solid fa-user-plus"></i> دعوة</div><div class="action-btn" onclick="openWithdraw()"><i class="fa-solid fa-arrow-down"></i> سحب</div><div class="action-btn" onclick="openSyncModal()"><i class="fa-solid fa-chart-line"></i> تداول</div><div class="action-btn" onclick="openDeposit()"><i class="fa-solid fa-arrow-up"></i> إيداع</div></div>
+                            <div class="crypto-ticker"><div class="crypto-item"><span class="crypto-name">SOL</span><div class="crypto-price" id="disp-sol">$142.15</div></div><div class="crypto-item"><span class="crypto-name">ETH</span><div class="crypto-price" id="disp-eth">$3,512</div></div><div class="crypto-item"><span class="crypto-name">BTC</span><div class="crypto-price" id="disp-btc">$68,421</div></div></div>
+                            
+                            <!-- قسم إشعارات السوق الحية -->
+                            <div class="market-notice">
+                                <span style="display:flex; align-items:center;"><i class="fa-solid fa-newspaper" style="margin-left: 8px; color: var(--gold);"></i>أشعار السوق</span>
+                                <div class="market-ticker-content">
+                                    <div class="market-scroll" id="market-ticker-scroll">⏳ جاري تحميل بيانات السوق...</div>
+                                </div>
+                                <span class="live-badge"><i class="fa-solid fa-circle" style="font-size: 6px; margin-left: 5px;"></i>مباشر</span>
+                            </div>
+                        </div>
+                        <div style="margin: 24px 0 8px;"><div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;"><i class="fa-solid fa-chart-pie" style="color: var(--accent);"></i><h3 style="margin:0; font-size: 18px;">تحليلات السوق</h3><span style="margin-right: auto; font-size: 12px; background: #1e293b; padding: 4px 10px; border-radius: 30px;">📊 5.0 ★</span></div>
+                        <div class="analysis-grid"><div class="analysis-item"><i class="fa-solid fa-chart-line"></i><div class="analysis-label">تحليل فني</div><div class="analysis-value">5.0</div><span class="analysis-badge">شراء قوي</span></div><div class="analysis-item"><i class="fa-solid fa-scale-balanced"></i><div class="analysis-label">تحليل أساسي</div><div class="analysis-value">4.9</div><span class="analysis-badge">إيجابي</span></div><div class="analysis-item"><i class="fa-solid fa-coins"></i><div class="analysis-label">قيمة سوقية</div><div class="analysis-value">5.0</div><span class="analysis-badge">مستقر</span></div><div class="analysis-item"><i class="fa-solid fa-gauge-high"></i><div class="analysis-label">مؤشر القوة</div><div class="analysis-value">4.8</div><span class="analysis-badge">صاعد</span></div></div></div>
+                        <h3 style="margin: 20px 0 10px;"><i class="fa-solid fa-arrow-trend-up" style="color: var(--success); margin-left: 8px;"></i>آخر السحوبات</h3>
+                        <div id="investor-list"></div>
+                    </div>`;
+                initTicker(); 
+                renderInvestors(); 
+                investorInterval = setInterval(renderInvestors, 3500);
+                startMarketUpdates(); // بدء تحديثات السوق الحية
+                // تحديث الأسعار في قسم العملات أيضاً
+                setTimeout(async () => {
+                    const prices = await fetchMarketPrices();
+                    document.getElementById('disp-btc') && (document.getElementById('disp-btc').innerText = '$' + prices.BTC.price);
+                    document.getElementById('disp-eth') && (document.getElementById('disp-eth').innerText = '$' + prices.ETH.price);
+                    document.getElementById('disp-sol') && (document.getElementById('disp-sol').innerText = '$' + prices.SOL.price);
+                }, 500);
+            } else if(page === 'vip') {
+                let html = `<div style="padding:20px;"><h3>باقات VIP</h3>`;
+                vipsData.forEach(v => html += `
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>VIP ${v.l} - ${v.p}$</span>
+                            <span style="color:var(--success);">+${v.d}$ يومياً</span>
+                        </div>
+                        <button class="btn-main" onclick="handleVIPTask(${v.p})">
+                            ${currentVIPLevel===v.l ? 'مفعل' : 'تفعيل'}
+                        </button>
+                    </div>
+                `);
+                cont.innerHTML = html + `</div>`;
+            } else if(page === 'me') {
+                const currentUser = getCurrentUser();
+                const userEmail = currentUser ? currentUser.email : (localStorage.getItem('user_email') || 'مستخدم');
+                const userID = getPersistentUserID();
+                let joinDate = currentUser ? currentUser.joinDate : new Date().toLocaleDateString('ar-EG');
+                cont.innerHTML = `
+                <div style="padding:15px;">
+                    <div class="me-header-card"><div style="display:flex; gap:15px; align-items:center;"><i class="fa-solid fa-user-astronaut" style="font-size:40px;"></i><div><b style="font-size:18px;">${userEmail}</b><div class="vip-badge" style="margin-top:5px;">VIP ${currentVIPLevel}</div></div></div><div class="progress-bar-wrap" style="margin:16px 0 8px;"><div class="progress-bar-fill" style="width:${Math.min(currentVIPLevel*8, 80)}%;"></div></div><div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-dim);"><span>المستوى الحالي</span><span>المستوى التالي: VIP ${currentVIPLevel+1}</span></div></div>
+                    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:8px; margin:15px 0;"><div class="d-stat-item"><span class="d-stat-val">$${currentBalance.toFixed(2)}</span><span class="d-stat-lbl">الرصيد</span></div><div class="d-stat-item"><span class="d-stat-val">$${totalDeposited.toFixed(2)}</span><span class="d-stat-lbl">إيداع</span></div><div class="d-stat-item"><span class="d-stat-val">$${totalWithdrawn.toFixed(2)}</span><span class="d-stat-lbl">مسحوب</span></div><div class="d-stat-item"><span class="d-stat-val">$${totalProfit.toFixed(2)}</span><span class="d-stat-lbl">الأرباح</span></div></div>
+                    <div class="account-section-title"><i class="fa-solid fa-id-card" style="color:var(--accent);"></i><span>معلومات الحساب</span></div>
+                    <div class="card" style="padding:5px 15px;"><div class="info-row"><span class="info-label"><i class="fa-regular fa-user"></i> معرف المستخدم</span><span class="info-value" onclick="copyOnly('${userID}')" style="cursor:pointer;">${userID} <i class="fa-regular fa-copy" style="font-size:10px;"></i></span></div><div class="info-row"><span class="info-label"><i class="fa-regular fa-calendar"></i> تاريخ الانضمام</span><span class="info-value">${joinDate}</span></div><div class="info-row"><span class="info-label"><i class="fa-regular fa-circle-check"></i> حالة الحساب</span><span class="info-value" style="color:var(--success);">نشط ✅</span></div><div class="info-row" style="border-bottom:none;"><span class="info-label"><i class="fa-solid fa-link"></i> رمز الإحالة</span><span class="info-value" onclick="copyOnly('${sessionInviteCode}')" style="cursor:pointer;">${sessionInviteCode} <i class="fa-regular fa-copy"></i></span></div></div>
+                    <div class="account-section-title"><i class="fa-solid fa-shield-halved" style="color:var(--gold);"></i><span>الأمان والخصوصية</span></div>
+                    <div class="card" style="padding:5px 15px;"><div class="info-row"><span class="info-label"><i class="fa-solid fa-lock"></i> كلمة المرور</span><span class="security-badge" onclick="showToast('يمكنك تغيير كلمة المرور من الإعدادات')" style="cursor:pointer;">●●●●●●●● <i class="fa-regular fa-pen-to-square"></i></span></div><div class="info-row"><span class="info-label"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</span><span class="info-value">${userEmail} <i class="fa-regular fa-circle-check" style="color:var(--success);"></i></span></div><div class="info-row" style="border-bottom:none;"><span class="info-label"><i class="fa-solid fa-qrcode"></i> التحقق بخطوتين</span><span class="info-value" style="color:var(--danger);" onclick="showToast('قم بتفعيل 2FA لتعزيز الأمان')">غير مفعل <i class="fa-regular fa-bell"></i></span></div></div>
+                    <button class="btn-main install-btn" onclick="triggerInstallOrInstructions()"><i class="fa-solid fa-download"></i> تثبيت التطبيق على الجهاز</button>
+                    <button class="btn-main" onclick="openHistory()" style="margin-top:12px;"><i class="fa-solid fa-clock-rotate-left"></i> سجل المعاملات الكامل</button>
+                    <button class="btn-outline" onclick="showToast('سيتم فتح إعدادات الحساب قريباً')"><i class="fa-regular fa-gear"></i> إعدادات متقدمة</button>
+                    <button class="btn-outline" style="border-color:var(--danger); color:var(--danger);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج</button>
+                </div>`;
+            } else if(page === 'team') {
+                cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('https://exurs7app.github.io/finance-app/')">https://exurs7app.github.io/finance-app/</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
+            }
+        }
+
+        // ---------- PWA & تثبيت التطبيق ----------
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                const swCode = `
+                    const CACHE_NAME = 'bontx-v1';
+                    const urlsToCache = [
+                        '.',
+                        'index.html',
+                        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+                        'https://cdn-icons-png.flaticon.com/512/2150/2150150.png'
+                    ];
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+                        );
+                    });
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request).then(response => response || fetch(event.request))
+                        );
+                    });
+                `;
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swUrl).then(reg => {
+                    console.log('Service Worker registered');
+                }).catch(err => console.log('SW registration failed', err));
+            }
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        function triggerInstallOrInstructions() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        showToast('🎉 جاري تثبيت التطبيق...', '#10b981');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                if (isIOS) {
+                    document.getElementById('install-instructions-modal').classList.remove('hidden');
                 } else {
-                    showPage('login-page');
+                    showToast('ℹ️ التطبيق قد يكون مثبتاً بالفعل أو استخدم قائمة المتصفح للتثبيت', '#f59e0b');
                 }
-            };
-        })();
+            }
+        }
+
+        window.triggerInstallOrInstructions = triggerInstallOrInstructions;
+
+        window.onload = function() {
+            registerServiceWorker();
+            if (localStorage.getItem('logged') === 'true') {
+                showPage('app');
+                navTo('home');
+            } else {
+                showPage('login-page');
+            }
+        };
     </script>
 </body>
-</html>
+    </html>
