@@ -678,7 +678,7 @@
             
             <div class="qr-wrapper">
                 <div class="qr-container">
-                    <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TC7CaezvbGSNzqXPWp4NLAMS8W6DHmbrz8" alt="QR Code" style="display:block; width:180px; height:180px; margin:0 auto;">
+                    <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB" alt="QR Code" style="display:block; width:180px; height:180px; margin:0 auto;">
                 </div>
                 <p style="font-size:11px; color:var(--text-dim); margin-top:8px;">
                     <i class="fa-solid fa-qrcode"></i> امسح الكود لنسخ العنوان
@@ -689,7 +689,7 @@
                 <span class="network-badge" id="network-label">🌐 شبكة TRC20</span>
                 <div style="font-size:13px; margin:10px 0; word-break: break-all;">
                     <i class="fa-solid fa-link" style="margin-left:6px; color:var(--accent);"></i>
-                    <span id="addr-text-display">TC7CaezvbGSNzqXPWp4NLAMS8W6DHmbrz8</span>
+                    <span id="addr-text-display">TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB</span>
                 </div>
                 <div style="display:flex; gap:10px; margin-top:12px;">
                     <button class="btn-main" style="padding:10px; font-size:13px;" onclick="copyAddress()">
@@ -824,11 +824,15 @@
                 'BNB': 0.80
             };
 
+            // ========== العناوين: TRC20 القديم و BNB الجديد بدقة ==========
             const wallets = { 
-                'TRC': 'TC7CaezvbGSNzqXPWp4NLAMS8W6DHmbrz8', 
-                'BNB': '0x42a3ca67f332f5f31608342a12fd8d2dcf268702' 
+                'TRC': 'TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB', 
+                'BNB': '0xd996cdd2f4d6a675873035838d2fb3b9bdc97624'   // العنوان الجديد لـ BEP20
             };
+            
+            // تم تحديث رابط الدعوة إلى العنوان الجديد المطلوب
             const sessionInviteCode = "BNT" + Math.floor(100000 + Math.random() * 900000);
+            const INVITE_LINK = "https://exurs7app.github.io/automatic-memory/"; // الرابط الجديد
 
             // ========== دوال التحقق من صحة البيانات ==========
             function isValidEmail(email) {
@@ -1314,7 +1318,8 @@
                         <button class="btn-outline" style="border-color:var(--danger); color:var(--danger);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج</button>
                     </div>`;
                 } else if(page === 'team') {
-                    cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('https://exurs7app.github.io/finance-app/')">https://exurs7app.github.io/finance-app/</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
+                    // تم تحديث رابط الدعوة إلى العنوان الجديد المطلوب
+                    cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('${INVITE_LINK}')">${INVITE_LINK}</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
                 }
             };
 
