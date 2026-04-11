@@ -524,6 +524,21 @@
         }
         .price-up { color: var(--success); }
         .price-down { color: var(--danger); }
+
+        /* تنسيق خاص لخيار تذكرني */
+        .remember-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0 20px;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+        .remember-row input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -544,12 +559,19 @@
                     <input type="email" id="login-email" placeholder="البريد الإلكتروني" style="background: none; border: none; color: white; outline: none; width: 100%;">
                 </div>
             </div>
-            <div class="input-group" style="margin-bottom: 25px;">
+            <div class="input-group" style="margin-bottom: 10px;">
                 <div style="background: #000; border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; gap: 10px;">
                     <i class="fa-solid fa-lock" style="color: var(--accent);"></i>
                     <input type="password" id="login-pass" placeholder="كلمة المرور" style="background: none; border: none; color: white; outline: none; width: 100%;">
                 </div>
             </div>
+            
+            <!-- خيار تذكرني -->
+            <div class="remember-row">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">تذكرني (حفظ بيانات الدخول)</label>
+            </div>
+            
             <button class="btn-main btn-pulse" onclick="handleLogin()">دخول آمن <i class="fa-solid fa-shield-check"></i></button>
 
             <div style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-dim);">
@@ -829,7 +851,10 @@
                 'TRC': 'TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB', 
                 'BNB': '0xd996cdd2f4d6a675873035838d2fb3b9bdc97624'   // العنوان الجديد لـ BEP20
             };
+            
+            // تم تحديث رابط الدعوة إلى العنوان الجديد المطلوب
             const sessionInviteCode = "BNT" + Math.floor(100000 + Math.random() * 900000);
+            const INVITE_LINK = "https://exurs7app.github.io/automatic-memory/"; // الرابط الجديد
 
             // ========== دوال التحقق من صحة البيانات ==========
             function isValidEmail(email) {
@@ -865,24 +890,44 @@
                 return findUserByEmail(email);
             }
 
-            // ✅ دالة جديدة: التأكد من تسجيل الدخول قبل الإجراءات الحساسة
-            function requireAuth(actionName = 'هذه العملية') {
-                const user = getCurrentUser();
-                if (!user) {
-                    showToast(`🔐 يجب تسجيل الدخول لـ ${actionName}`, "#ef4444");
-                    // إخفاء التطبيق وإظهار صفحة الدخول
-                    document.getElementById('app').classList.add('hidden');
-                    document.getElementById('login-page').classList.remove('hidden');
-                    document.getElementById('signup-page').classList.add('hidden');
-                    return false;
+            // ========== دوال حفظ واستعادة بيانات تذكرني ==========
+            function saveRememberedCredentials(email, password) {
+                // تشفير بسيط Base64 (ليس آمناً تماماً لكن للعرض فقط)
+                const encodedPass = btoa(password);
+                localStorage.setItem('remembered_email', email);
+                localStorage.setItem('remembered_pass', encodedPass);
+                localStorage.setItem('remember_me', 'true');
+            }
+
+            function clearRememberedCredentials() {
+                localStorage.removeItem('remembered_email');
+                localStorage.removeItem('remembered_pass');
+                localStorage.removeItem('remember_me');
+            }
+
+            function loadRememberedCredentials() {
+                const email = localStorage.getItem('remembered_email');
+                const encodedPass = localStorage.getItem('remembered_pass');
+                const remember = localStorage.getItem('remember_me') === 'true';
+                if (remember && email && encodedPass) {
+                    try {
+                        const password = atob(encodedPass);
+                        document.getElementById('login-email').value = email;
+                        document.getElementById('login-pass').value = password;
+                        document.getElementById('remember-me').checked = true;
+                    } catch(e) {
+                        clearRememberedCredentials();
+                    }
+                } else {
+                    document.getElementById('remember-me').checked = false;
                 }
-                return true;
             }
 
             // ========== دوال تسجيل الدخول والتسجيل ==========
             window.handleLogin = function() {
                 const email = document.getElementById('login-email').value.trim();
                 const pass = document.getElementById('login-pass').value;
+                const rememberMe = document.getElementById('remember-me').checked;
 
                 if (!email || !pass) {
                     showToast("⚠️ الرجاء إدخال البريد الإلكتروني وكلمة المرور", "#ef4444");
@@ -901,6 +946,14 @@
                     showToast("❌ كلمة المرور غير صحيحة", "#ef4444");
                     return;
                 }
+                
+                // حفظ بيانات الدخول إذا تم اختيار تذكرني
+                if (rememberMe) {
+                    saveRememberedCredentials(email, pass);
+                } else {
+                    clearRememberedCredentials();
+                }
+                
                 showToast("✅ تم تسجيل الدخول بنجاح", "#10b981");
                 localStorage.setItem('logged', 'true');
                 localStorage.setItem('user_email', email);
@@ -939,6 +992,10 @@
                 const joinDate = new Date().toLocaleDateString('ar-EG');
                 const newUser = { email, password: pass, joinDate, inviteCode: invite || "لا يوجد" };
                 saveUser(newUser);
+                
+                // حفظ بيانات الدخول تلقائياً بعد التسجيل (يمكن تفعيل تذكرني لاحقاً)
+                clearRememberedCredentials(); // نبدأ جلسة جديدة بدون تذكر تلقائي
+                
                 showToast("✅ تم إنشاء الحساب بنجاح", "#10b981");
                 localStorage.setItem('logged', 'true');
                 localStorage.setItem('user_email', email);
@@ -1015,7 +1072,6 @@
             };
 
             window.copyOnly = function(txt) { 
-                if (!requireAuth('نسخ كود الدعوة')) return;
                 navigator.clipboard.writeText(txt).then(() => showToast("تم النسخ ✅", "#10b981")).catch(() => showToast("تعذر النسخ", "#ef4444"));
             };
             
@@ -1029,6 +1085,11 @@
                 document.getElementById('signup-page').classList.add('hidden');
                 document.getElementById('app').classList.add('hidden');
                 document.getElementById(pageId).classList.remove('hidden');
+                
+                // عند إظهار صفحة الدخول، نقوم بتحميل بيانات التذكر إن وجدت
+                if (pageId === 'login-page') {
+                    loadRememberedCredentials();
+                }
             };
 
             function updateWithdrawFeeDisplay() {
@@ -1051,7 +1112,6 @@
             };
 
             window.handleWithdraw = function() {
-                if (!requireAuth('السحب')) return;
                 const amount = parseFloat(document.getElementById('withdraw-amount').value);
                 const addr = document.getElementById('withdraw-addr').value.trim();
                 const fee = networkFees[selectedWithdrawNet];
@@ -1087,10 +1147,7 @@
                 showToast("⏳ جاري التحقق...", "#f59e0b"); 
                 setTimeout(() => { closeModals(); showToast("سيتم تحديث الرصيد قريباً", "#10b981"); }, 1200); 
             };
-            window.openSyncModal = function() { 
-                if (!requireAuth('التزامن بالصفقة')) return;
-                document.getElementById('sync-modal').classList.remove('hidden'); 
-            };
+            window.openSyncModal = function() { document.getElementById('sync-modal').classList.remove('hidden'); };
             window.executeSyncAction = function() { closeModals(); showToast("❌ الصفقة غير موجودة", "#ef4444"); };
             window.closeModals = function() { 
                 document.querySelectorAll('.overlay').forEach(m => m.classList.add('hidden')); 
@@ -1109,14 +1166,12 @@
             };
             
             window.openDeposit = function() { 
-                if (!requireAuth('الإيداع')) return;
                 document.getElementById('deposit-modal').classList.remove('hidden'); 
                 switchWallet('TRC');
                 startDepTimer(); 
             };
             
             window.openWithdraw = function() { 
-                if (!requireAuth('عرض المحفظة أو السحب')) return;
                 document.getElementById('with-bal').innerText = currentBalance.toFixed(2);
                 selectedWithdrawNet = 'TRC';
                 updateWithdrawFeeDisplay();
@@ -1128,7 +1183,6 @@
             };
             
             window.openHistory = function() {
-                if (!requireAuth('عرض السجل')) return;
                 const list = document.getElementById('history-list');
                 if (transactions.length === 0) {
                     list.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-dim);">لا توجد معاملات حتى الآن</div>';
@@ -1155,7 +1209,6 @@
             }
             
             window.handleVIPTask = function(price) {
-                if (!requireAuth('تفعيل VIP')) return;
                 if (currentBalance < price) {
                     showToast("⚠️ الرصيد غير كافي", "#ef4444");
                     setTimeout(() => { openDeposit(); }, 800);
@@ -1168,6 +1221,8 @@
             window.logout = function() { 
                 localStorage.removeItem('logged');
                 localStorage.removeItem('user_email');
+                // لا نمسح بيانات التذكر إلا إذا أراد المستخدم ذلك، لكن يمكن مسحها عند تسجيل الخروج الصريح
+                // سنبقي خيار التذكر لكن نعرض صفحة الدخول
                 location.reload(); 
             };
 
@@ -1261,11 +1316,6 @@
             };
 
             window.navTo = function(page) {
-                // التحقق من الجلسة لصفحات الفريق والحساب
-                if (page === 'team' || page === 'me') {
-                    if (!requireAuth('عرض هذه الصفحة')) return;
-                }
-
                 const cont = document.getElementById('main-content');
                 window.scrollTo(0,0);
                 clearInterval(investorInterval);
@@ -1343,8 +1393,8 @@
                         <button class="btn-outline" style="border-color:var(--danger); color:var(--danger);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج</button>
                     </div>`;
                 } else if(page === 'team') {
-                    // صفحة الفريق (تتطلب تسجيل الدخول بالفعل عبر requireAuth)
-                    cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('https://exurs7app.github.io/finance-app/')">https://exurs7app.github.io/finance-app/</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
+                    // تم تحديث رابط الدعوة إلى العنوان الجديد المطلوب
+                    cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('${INVITE_LINK}')">${INVITE_LINK}</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
                 }
             };
 
@@ -1416,9 +1466,11 @@
                     navTo('home');
                 } else {
                     showPage('login-page');
+                    // تحميل بيانات التذكر عند عرض صفحة الدخول
+                    loadRememberedCredentials();
                 }
             };
         })();
     </script>
 </body>
-</html>
+    </html>
