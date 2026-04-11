@@ -12,11 +12,12 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#050505">
     
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2150/2150150.png">
+    <!-- صورة جديدة للتطبيق عند التثبيت (أيقونة رئيسية) -->
+    <link rel="icon" type="image/png" sizes="512x512" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
     
-    <!-- Manifest محسن بصيغة JSON صحيحة -->
-    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22BontX%20PRO%22%2C%22short_name%22%3A%22BontX%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23050505%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F2150%2F2150150.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+    <!-- Manifest محسّن مع الأيقونة الجديدة (192x192 و 512x512) -->
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22BontX%20PRO%22%2C%22short_name%22%3A%22BontX%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23050505%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F3135%2F3135715.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%2C%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F3135%2F3135715.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1326,7 +1327,7 @@
                             '.',
                             'index.html',
                             'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-                            'https://cdn-icons-png.flaticon.com/512/2150/2150150.png'
+                            'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
                         ];
                         self.addEventListener('install', event => {
                             event.waitUntil(
@@ -1390,4 +1391,4 @@
         })();
     </script>
 </body>
-    </html>
+</html>
