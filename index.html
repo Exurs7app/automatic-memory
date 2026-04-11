@@ -829,10 +829,7 @@
                 'TRC': 'TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB', 
                 'BNB': '0xd996cdd2f4d6a675873035838d2fb3b9bdc97624'   // العنوان الجديد لـ BEP20
             };
-            
-            // تم تحديث رابط الدعوة إلى العنوان الجديد المطلوب
             const sessionInviteCode = "BNT" + Math.floor(100000 + Math.random() * 900000);
-            const INVITE_LINK = "https://exurs7app.github.io/automatic-memory/"; // الرابط الجديد
 
             // ========== دوال التحقق من صحة البيانات ==========
             function isValidEmail(email) {
@@ -866,6 +863,20 @@
                 const email = localStorage.getItem('user_email');
                 if (!email) return null;
                 return findUserByEmail(email);
+            }
+
+            // ✅ دالة جديدة: التأكد من تسجيل الدخول قبل الإجراءات الحساسة
+            function requireAuth(actionName = 'هذه العملية') {
+                const user = getCurrentUser();
+                if (!user) {
+                    showToast(`🔐 يجب تسجيل الدخول لـ ${actionName}`, "#ef4444");
+                    // إخفاء التطبيق وإظهار صفحة الدخول
+                    document.getElementById('app').classList.add('hidden');
+                    document.getElementById('login-page').classList.remove('hidden');
+                    document.getElementById('signup-page').classList.add('hidden');
+                    return false;
+                }
+                return true;
             }
 
             // ========== دوال تسجيل الدخول والتسجيل ==========
@@ -1004,6 +1015,7 @@
             };
 
             window.copyOnly = function(txt) { 
+                if (!requireAuth('نسخ كود الدعوة')) return;
                 navigator.clipboard.writeText(txt).then(() => showToast("تم النسخ ✅", "#10b981")).catch(() => showToast("تعذر النسخ", "#ef4444"));
             };
             
@@ -1039,6 +1051,7 @@
             };
 
             window.handleWithdraw = function() {
+                if (!requireAuth('السحب')) return;
                 const amount = parseFloat(document.getElementById('withdraw-amount').value);
                 const addr = document.getElementById('withdraw-addr').value.trim();
                 const fee = networkFees[selectedWithdrawNet];
@@ -1074,7 +1087,10 @@
                 showToast("⏳ جاري التحقق...", "#f59e0b"); 
                 setTimeout(() => { closeModals(); showToast("سيتم تحديث الرصيد قريباً", "#10b981"); }, 1200); 
             };
-            window.openSyncModal = function() { document.getElementById('sync-modal').classList.remove('hidden'); };
+            window.openSyncModal = function() { 
+                if (!requireAuth('التزامن بالصفقة')) return;
+                document.getElementById('sync-modal').classList.remove('hidden'); 
+            };
             window.executeSyncAction = function() { closeModals(); showToast("❌ الصفقة غير موجودة", "#ef4444"); };
             window.closeModals = function() { 
                 document.querySelectorAll('.overlay').forEach(m => m.classList.add('hidden')); 
@@ -1093,12 +1109,14 @@
             };
             
             window.openDeposit = function() { 
+                if (!requireAuth('الإيداع')) return;
                 document.getElementById('deposit-modal').classList.remove('hidden'); 
                 switchWallet('TRC');
                 startDepTimer(); 
             };
             
             window.openWithdraw = function() { 
+                if (!requireAuth('عرض المحفظة أو السحب')) return;
                 document.getElementById('with-bal').innerText = currentBalance.toFixed(2);
                 selectedWithdrawNet = 'TRC';
                 updateWithdrawFeeDisplay();
@@ -1110,6 +1128,7 @@
             };
             
             window.openHistory = function() {
+                if (!requireAuth('عرض السجل')) return;
                 const list = document.getElementById('history-list');
                 if (transactions.length === 0) {
                     list.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-dim);">لا توجد معاملات حتى الآن</div>';
@@ -1136,6 +1155,7 @@
             }
             
             window.handleVIPTask = function(price) {
+                if (!requireAuth('تفعيل VIP')) return;
                 if (currentBalance < price) {
                     showToast("⚠️ الرصيد غير كافي", "#ef4444");
                     setTimeout(() => { openDeposit(); }, 800);
@@ -1241,6 +1261,11 @@
             };
 
             window.navTo = function(page) {
+                // التحقق من الجلسة لصفحات الفريق والحساب
+                if (page === 'team' || page === 'me') {
+                    if (!requireAuth('عرض هذه الصفحة')) return;
+                }
+
                 const cont = document.getElementById('main-content');
                 window.scrollTo(0,0);
                 clearInterval(investorInterval);
@@ -1318,8 +1343,8 @@
                         <button class="btn-outline" style="border-color:var(--danger); color:var(--danger);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج</button>
                     </div>`;
                 } else if(page === 'team') {
-                    // تم تحديث رابط الدعوة إلى العنوان الجديد المطلوب
-                    cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('${INVITE_LINK}')">${INVITE_LINK}</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
+                    // صفحة الفريق (تتطلب تسجيل الدخول بالفعل عبر requireAuth)
+                    cont.innerHTML = `<div style="padding:20px;"><h3>فريق الإحالة</h3><div class="stat-grid"><div class="stat-box">الأعضاء: 0</div><div class="stat-box">العمولة: 0.00$</div></div><div class="card"><div>رابط الدعوة:</div><div class="addr-display" onclick="copyOnly('https://exurs7app.github.io/finance-app/')">https://exurs7app.github.io/finance-app/</div><div>كود الدعوة: <span onclick="copyOnly('${sessionInviteCode}')" style="background:#000; padding:6px 12px; border-radius:8px;">${sessionInviteCode}</span></div></div><h4>مستويات الأرباح</h4><div class="card">مباشر 15% • المستوى B 3% • المستوى C 2%</div></div>`;
                 }
             };
 
@@ -1396,4 +1421,4 @@
         })();
     </script>
 </body>
-    </html>
+</html>
