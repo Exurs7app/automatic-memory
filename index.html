@@ -1,4 +1,4 @@
-here<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -531,7 +531,7 @@ here<!DOCTYPE html>
     <div id="toast"></div>
 
     <!-- صفحات الدخول والتسجيل -->
-    <div id="login-page" class="hidden">
+    <div id="login-page">
         <div class="login-container fade-in">
             <div style="text-align: center; margin-bottom: 30px;">
                 <i class="fa-solid fa-gem" style="font-size: 50px; color: var(--accent); margin-bottom: 15px;"></i>
@@ -1390,11 +1390,10 @@ here<!DOCTYPE html>
                     showPage('app');
                     navTo('home');
                 } else {
-                    // ⭐ عند أول دخول: عرض صفحة إنشاء حساب جديد بدلاً من تسجيل الدخول
-                    showPage('signup-page');
+                    showPage('login-page');
                 }
             };
         })();
     </script>
 </body>
-                </html>
+    </html>
