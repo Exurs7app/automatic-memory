@@ -661,7 +661,7 @@
         </div>
     </div>
 
-    <!-- مودال الإيداع المطور مع باركود وتفاصيل -->
+    <!-- مودال الإيداع المطور مع باركود وتفاصيل (تم تحديث عنوان TRC20) -->
     <div id="deposit-modal" class="overlay hidden">
         <div class="modal">
             <i class="fa-solid fa-xmark close-modal" onclick="closeModals()"></i>
@@ -674,7 +674,8 @@
             
             <div class="qr-wrapper">
                 <div class="qr-container">
-                    <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB" alt="QR Code" style="display:block; width:180px; height:180px; margin:0 auto;">
+                    <!-- تم تحديث عنوان TRC20 الافتراضي في QR Code -->
+                    <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TKs99vRna6QHmdLJ7Bjp3bpeVafJVTTrSN" alt="QR Code" style="display:block; width:180px; height:180px; margin:0 auto;">
                 </div>
                 <p style="font-size:11px; color:var(--text-dim); margin-top:8px;">
                     <i class="fa-solid fa-qrcode"></i> امسح الكود لنسخ العنوان
@@ -685,7 +686,8 @@
                 <span class="network-badge" id="network-label">🌐 شبكة TRC20</span>
                 <div style="font-size:13px; margin:10px 0; word-break: break-all;">
                     <i class="fa-solid fa-link" style="margin-left:6px; color:var(--accent);"></i>
-                    <span id="addr-text-display">TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB</span>
+                    <!-- العنوان الجديد معروض هنا -->
+                    <span id="addr-text-display">TKs99vRna6QHmdLJ7Bjp3bpeVafJVTTrSN</span>
                 </div>
                 <div style="display:flex; gap:10px; margin-top:12px;">
                     <button class="btn-main" style="padding:10px; font-size:13px;" onclick="copyAddress()">
@@ -820,10 +822,10 @@
                 'BNB': 0.80
             };
 
-            // ========== العناوين: TRC20 القديم و BNB الجديد بدقة ==========
+            // ========== العناوين: تم تحديث عنوان BNB (BEP20) إلى العنوان الجديد المطلوب ==========
             const wallets = { 
-                'TRC': 'TTuwCDxt1mwkvw2Zr25UfdeKPNHbFouvpB', 
-                'BNB': '0xd996cdd2f4d6a675873035838d2fb3b9bdc97624'   // العنوان الجديد لـ BEP20
+                'TRC': 'TKs99vRna6QHmdLJ7Bjp3bpeVafJVTTrSN',  // العنوان الجديد TRC20
+                'BNB': '0xe0e64955c9d15c093858902B9cb5A18507870BA5'   // ✅ العنوان الجديد لـ BEP20 (BNB) تم تحديثه بدقة
             };
             
             // تم تحديث رابط الدعوة إلى العنوان الجديد المطلوب
@@ -1355,4 +1357,4 @@
         })();
     </script>
 </body>
-    </html>
+                        </html>
